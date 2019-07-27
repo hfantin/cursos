@@ -1,5 +1,6 @@
 package br.com.alura.forum.model
 
+import br.com.alura.forum.dto.RespostaDto
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -16,3 +17,5 @@ data class Resposta(
         val autor: Usuario? = null,
         val solucao: Boolean = false
 )
+
+fun Resposta.asRespostaDto() = RespostaDto(id, mensagem, dataCriacao, autor?.nome)

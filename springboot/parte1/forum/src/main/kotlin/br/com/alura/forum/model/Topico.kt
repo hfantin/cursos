@@ -1,5 +1,6 @@
 package br.com.alura.forum.model
 
+import br.com.alura.forum.dto.DetalheTopicoDto
 import br.com.alura.forum.dto.TopicoDto
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -8,18 +9,19 @@ import javax.persistence.*
 data class Topico(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
-        val titulo: String? = null,
-        val mensagem: String? = null,
-        val dataCriacao: LocalDateTime = LocalDateTime.now(),
+        var id: Long? = null,
+        var titulo: String? = null,
+        var mensagem: String? = null,
+        var dataCriacao: LocalDateTime = LocalDateTime.now(),
         @Enumerated(EnumType.STRING)
-        val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
+        var status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
         @ManyToOne
-        val autor: Usuario? = null,
+        var autor: Usuario? = null,
         @ManyToOne
-        val curso: Curso? = null,
+        var curso: Curso? = null,
         @OneToMany(mappedBy = "topico")
-        val respostas: MutableList<Resposta> = mutableListOf()
+        var respostas: MutableList<Resposta> = mutableListOf()
 )
 
-fun Topico.toDto() = TopicoDto(id, titulo, mensagem, dataCriacao)
+fun Topico.asTopicoDto() = TopicoDto(id, titulo, mensagem, dataCriacao)
+fun Topico.asDetaheTopicoDto() = DetalheTopicoDto(id, titulo, mensagem, dataCriacao, autor?.nome, status, respostas.map { it.asRespostaDto() })

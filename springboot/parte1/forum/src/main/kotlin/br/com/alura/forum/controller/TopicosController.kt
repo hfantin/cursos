@@ -1,14 +1,17 @@
 package br.com.alura.forum.controller
 
 import br.com.alura.forum.dto.TopicoDto
+import br.com.alura.forum.form.AtualizacaoTopicoForm
 import br.com.alura.forum.form.TopicoForm
 import br.com.alura.forum.form.converter
-import br.com.alura.forum.model.Topico
-import br.com.alura.forum.model.toDto
+import br.com.alura.forum.model.asDetaheTopicoDto
+import br.com.alura.forum.model.asTopicoDto
 import br.com.alura.forum.repository.CursoRepository
 import br.com.alura.forum.repository.TopicoRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
@@ -25,20 +28,44 @@ class TopicosController {
     private lateinit var cursooRepository: CursoRepository
 
     @GetMapping
-    fun lista(nomeCurso: String?) = listarTopicos(nomeCurso).map { it.toDto() }
+    fun lista(nomeCurso: String?) = listarTopicos(nomeCurso).map { it.asTopicoDto() }
 
-    private fun listarTopicos(nomeCurso: String?): List<Topico> {
-        return nomeCurso?.let {
+    @GetMapping("/{id}")
+    fun detalhar(@PathVariable id: Long) =
+            topicoRepository.findByIdOrNull(id)?.let { ResponseEntity.ok(it.asDetaheTopicoDto()) }
+                    ?: ResponseEntity.notFound().build()
+
+    private fun listarTopicos(nomeCurso: String?) =  nomeCurso?.let {
             topicoRepository.findByCursoNome(nomeCurso)
         } ?: topicoRepository.findAll()
-    }
 
     @PostMapping
+    @Transactional
     fun cadastrar(@RequestBody @Valid form: TopicoForm, uriBuilder: UriComponentsBuilder): ResponseEntity<TopicoDto> {
         val topico = form.converter(cursooRepository)
         topicoRepository.save(topico);
         val uri = uriBuilder.path("/v1/topicos/{id}").buildAndExpand(topico.id).toUri()
-        return ResponseEntity.created(uri).body(topico.toDto())
+        return ResponseEntity.created(uri).body(topico.asTopicoDto())
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    fun atualizar(@PathVariable id: Long, @RequestBody @Valid form: AtualizacaoTopicoForm) =
+            topicoRepository.findByIdOrNull(id)?.let {
+                ResponseEntity.ok(it.also {
+                    it.titulo = form.titulo
+                    it.mensagem = form.mensagem
+                }.asDetaheTopicoDto())
+            } ?: ResponseEntity.notFound().build()
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    fun remover(@PathVariable id: Long): ResponseEntity<Any> {
+        if(topicoRepository.existsById(id)) {
+            topicoRepository.deleteById(id)
+            return ResponseEntity.ok().build()
+        }
+        return ResponseEntity.notFound().build()
     }
 
 }
