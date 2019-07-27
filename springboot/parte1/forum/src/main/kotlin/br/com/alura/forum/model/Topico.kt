@@ -1,5 +1,6 @@
 package br.com.alura.forum.model
 
+import br.com.alura.forum.dto.TopicoDto
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -20,3 +21,5 @@ data class Topico(
         @OneToMany(mappedBy = "topico")
         val respostas: MutableList<Resposta> = mutableListOf()
 )
+
+fun Topico.toDto() = TopicoDto(id, titulo, mensagem, dataCriacao)

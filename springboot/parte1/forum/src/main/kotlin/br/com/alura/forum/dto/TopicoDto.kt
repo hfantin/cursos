@@ -9,5 +9,3 @@ data class TopicoDto(
         var mensagem: String? = null,
         var dataCriacao: LocalDateTime = LocalDateTime.now()
 )
-
-fun Topico.toDto() = TopicoDto(id, titulo, mensagem, dataCriacao)

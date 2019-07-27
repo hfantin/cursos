@@ -2,3 +2,14 @@
 
 - para acessar o console do h2, utilize a url abaixo;   
 > http://localhost:9000/h2-console
+
+- teste usando o postman com as seguinte uri:   
+[http://localhost:9000/v1/topicos](http://localhost:9000/v1/topicos)
+payload:         
+```
+{
+    "titulo": "Dúvida",
+    "mensagem": "Erro ao criar projeto",
+    "nomeCurso": "Spring Boot"
+}
+```
