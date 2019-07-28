@@ -13,3 +13,5 @@ payload:
     "nomeCurso": "Spring Boot"
 }
 ```
+
+- para habilitar o suporte do spring à paginação, utilize a anotação @EnableSpringDataWebSupport na classe principal
