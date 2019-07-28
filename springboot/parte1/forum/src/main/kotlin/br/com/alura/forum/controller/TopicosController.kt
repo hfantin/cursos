@@ -30,12 +30,6 @@ class TopicosController {
     @Autowired
     private lateinit var cursooRepository: CursoRepository
 
-
-    fun teste() {
-        val lista = listOf("")
-        lista.forEach { }
-    }
-
     @GetMapping
     fun listar(@RequestParam(required = false) nomeCurso: String?,
                @PageableDefault(sort = ["dataCriacao"], direction = Direction.DESC, page = 0, size = 10) paginacao: Pageable) =
