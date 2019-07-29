@@ -10,6 +10,8 @@ import br.com.alura.forum.model.asTopicoDto
 import br.com.alura.forum.repository.CursoRepository
 import br.com.alura.forum.repository.TopicoRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.CacheEvict
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort.Direction
 import org.springframework.data.web.PageableDefault
@@ -31,6 +33,7 @@ class TopicosController {
     private lateinit var cursooRepository: CursoRepository
 
     @GetMapping
+    @Cacheable("lista-topicos")
     fun listar(@RequestParam(required = false) nomeCurso: String?,
                @PageableDefault(sort = ["dataCriacao"], direction = Direction.DESC, page = 0, size = 10) paginacao: Pageable) =
             listarTopicos(nomeCurso, paginacao).map { it.asTopicoDto() }
@@ -47,6 +50,7 @@ class TopicosController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value="lista-topicos", allEntries = true)
     fun cadastrar(@RequestBody @Valid form: TopicoForm, uriBuilder: UriComponentsBuilder): ResponseEntity<TopicoDto> {
         val topico = form.converter(cursooRepository)
         topicoRepository.save(topico);
@@ -66,6 +70,7 @@ class TopicosController {
 
     @PutMapping("/{id}")
     @Transactional
+    @CacheEvict(value="lista-topicos", allEntries = true)
     fun atualizar(@PathVariable id: Long, @RequestBody @Valid form: AtualizacaoTopicoForm) = topicoRepository.findByIdOrNotFound(id) {
         it.also { topico ->
             topico.titulo = form.titulo
@@ -75,6 +80,7 @@ class TopicosController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @CacheEvict(value="lista-topicos", allEntries = true)
     fun remover(@PathVariable id: Long): ResponseEntity<Any> {
         if (topicoRepository.existsById(id)) {
             topicoRepository.deleteById(id)

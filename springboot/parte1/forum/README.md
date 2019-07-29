@@ -15,3 +15,6 @@ payload:
 ```
 
 - para habilitar o suporte do spring à paginação, utilize a anotação @EnableSpringDataWebSupport na classe principal
+
+- cache - usar provedor, Redis por exemplo
+- cuidado com o cache, deve ser usado em tabelas que quase não mudam
