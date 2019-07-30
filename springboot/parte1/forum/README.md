@@ -23,3 +23,6 @@ payload:
 ### Links 
 
 - [spring-boot-admin](https://github.com/codecentric/spring-boot-admin)
+- [swagger](https://swagger.io)
+- [https://springfox.github.io/springfox/](https://springfox.github.io/springfox/)
+= [swagger-ui](http://localhost:9000/swagger-ui.html)

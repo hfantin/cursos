@@ -40,6 +40,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     // configuracoes de recursos estaticos(js, css, imagens, etc
     override fun configure(web: WebSecurity) {
+        web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
     }
 
     // configuracoes de autorizacao - urls, etc
