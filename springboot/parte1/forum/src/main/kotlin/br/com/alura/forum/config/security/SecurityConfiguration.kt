@@ -1,5 +1,6 @@
 package br.com.alura.forum.config.security
 
+import br.com.alura.forum.repository.UsuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @EnableWebSecurity
 @Configuration
@@ -20,6 +22,12 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     @Autowired
     private lateinit var autenticacaoService: AutenticacaoService
+
+    @Autowired
+    private lateinit var tokenService: TokenService
+
+    @Autowired
+    private lateinit var usuarioRepository: UsuarioRepository
 
     @Bean
     override fun authenticationManager() = super.authenticationManager()
@@ -44,5 +52,6 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 //                .and().formLogin() // autenticacao tradicional com formulario de login
                 .and().csrf().disable() // desabilita
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().addFilterBefore(AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter::class.java)
     }
 }

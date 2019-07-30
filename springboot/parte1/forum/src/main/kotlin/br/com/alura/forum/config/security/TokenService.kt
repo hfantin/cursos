@@ -31,4 +31,18 @@ class TokenService {
                 .compact()
     }
 
+    fun isTokenValido(token: String?): Boolean {
+        try {
+            Jwts.parser().setSigningKey(secret).parseClaimsJws(token)
+            return true
+        } catch (e: Exception) {
+            return false
+        }
+    }
+
+    fun getIdUsuario(token: String): Long {
+        val body = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).body
+        return body.subject.toLong()
+    }
+
 }
