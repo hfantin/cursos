@@ -18,3 +18,8 @@ payload:
 
 - cache - usar provedor, Redis por exemplo
 - cuidado com o cache, deve ser usado em tabelas que quase não mudam
+
+
+### Links 
+
+- [spring-boot-admin](https://github.com/codecentric/spring-boot-admin)

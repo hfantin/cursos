@@ -48,6 +48,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
                 .antMatchers(HttpMethod.GET, "/v1/topicos").permitAll()
                 .antMatchers(HttpMethod.GET, "/v1/topicos/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
+                .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                 .anyRequest().authenticated()
 //                .and().formLogin() // autenticacao tradicional com formulario de login
                 .and().csrf().disable() // desabilita

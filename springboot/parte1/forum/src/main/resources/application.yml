@@ -19,6 +19,24 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  boot:
+    admin:
+      client:
+        url: http://localhost:9001
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+info:
+  app:
+    name: ${name}
+    version: ${version}
+
 
 forum:
   jwt:
