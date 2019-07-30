@@ -1,6 +1,5 @@
 package br.com.alura.forum.dto
 
-import br.com.alura.forum.model.Topico
 import java.time.LocalDateTime
 
 data class TopicoDto(

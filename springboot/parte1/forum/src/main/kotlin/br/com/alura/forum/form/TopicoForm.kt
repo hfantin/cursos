@@ -2,9 +2,9 @@ package br.com.alura.forum.form
 
 import br.com.alura.forum.model.Topico
 import br.com.alura.forum.repository.CursoRepository
+import org.hibernate.validator.constraints.Length
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
-import org.hibernate.validator.constraints.Length
 
 
 data class TopicoForm(
