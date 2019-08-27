@@ -1,6 +1,19 @@
 ## Kotlin para desenvolvedores java
 
-![kotlin Logo|150x150, 20%](img/kotlin.jpeg#thumbnail)
+![kotlin Logo](img/kotlin.jpeg#thumbnail)
 
 
-1. 
+1. Classes e Funções: 
+  - top level functions
+  - menber functions
+
+2. Tipificação de dados:      
+  - null safety 
+  - inferencia
+3. Controle de fluxo: 
+  - if
+  - when
+  - smart cast
+4. Constructors
+  - primary vs secondary
+  - init blocks 
