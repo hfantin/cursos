@@ -1,9 +1,6 @@
 ## Kotlin para desenvolvedores java
 
-![kotlin Logo](img/kotlin.jpeg#thumbnail)
-img[src*="#thumbnail"] {
-   width:50px;
-   height:50px;
-}
+![kotlin Logo|150x150, 20%](img/kotlin.jpeg#thumbnail)
+
 
 1. 
