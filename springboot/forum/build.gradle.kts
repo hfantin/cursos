@@ -15,6 +15,29 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 //processResources {
 //	expand(project.properties)
 //}
+/*
+configure<ProcessResources>("processResources") {
+	filesMatching("*.yml") {
+		expand(project.properties)
+	}
+}
+
+inline fun <reified C> Project.configure(name: String, configuration: C.() -> Unit) {
+	(this.tasks.getByName(name) as C).configuration()
+}
+*/
+
+/*
+(tasks.getByName("processResources") as ProcessResources).apply {
+	filesMatching("application.properties") {
+		expand(project.properties)
+	}
+}
+*/
+
+springBoot {
+	buildInfo()
+}
 
 
 repositories {
