@@ -1,6 +1,6 @@
 ## Introdução ao Kotlin
 
-![kotlin Logo](img/kotlin.jpeg#thumbnail)
+![kotlin Logo](assets/kotlin.jpeg#thumbnail)
 
 ### Pendencias:
 - properties
