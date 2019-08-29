@@ -1,0 +1,8 @@
+# usando script do fabric8 shell
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+ADD run.sh run.sh
+RUN chmod +x run.sh
+ENTRYPOINT JAVA_OPTIONS=${JAVA_OPTS} JAVA_APP_JAR=app.jar run.sh
+#CMD ./run.sh
