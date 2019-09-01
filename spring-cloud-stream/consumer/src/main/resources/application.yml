@@ -1,0 +1,20 @@
+server:
+  port: 5701
+
+#Este projeto é um producer que por usar a classe Soucer como binder, possui como channel name o valor 'output'.
+#Caso não fosse setado um destination para o channel 'output' seria criado um exchange com o nome 'output'.
+#Esta configuração abaixo determina que o channel 'output' publique as mensagens no exchange 'simple-message' e
+#o próprio framework se encarrega de criar esse exchange.
+#O nome simple-message poderia ser substituido por qualquer outro nome
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: topico.hamilton
+          group: tosco
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: 123456
+    port: 5672
