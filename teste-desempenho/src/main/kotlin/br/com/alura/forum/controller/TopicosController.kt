@@ -22,14 +22,8 @@ class TopicosController {
 
     @GetMapping
     @Cacheable("lista-topicos")
-    fun listar(@RequestParam(required = false) nomeCurso: String?,
-               @PageableDefault(sort = ["dataCriacao"], direction = Direction.DESC, page = 0, size = 10) paginacao: Pageable) =
-            listarTopicos(nomeCurso, paginacao).map { it.asTopicoDto() }
-
-    private fun listarTopicos(nomeCurso: String?, paginacao: Pageable) = topicoRepository.findAll(paginacao)
-
-
-
+    fun listar(@PageableDefault(sort = ["dataCriacao"], direction = Direction.DESC, page = 0, size = 10) paginacao: Pageable) =
+            topicoRepository.findAll(paginacao).map { it.asTopicoDto() }
 
 }
 
