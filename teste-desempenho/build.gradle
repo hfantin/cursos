@@ -60,7 +60,7 @@ compileTestKotlin {
 docker {
 	dependsOn build
 	name "${project.group}/${jar.archiveBaseName.get()}"
-	files bootJar.archiveFile, "run-fabric8.sh"
+	files bootJar.archiveFile, "run.sh"
 	buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
 
 }
