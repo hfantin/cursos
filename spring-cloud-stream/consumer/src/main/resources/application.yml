@@ -11,8 +11,8 @@ spring:
     stream:
       bindings:
         input:
-          destination: topico.hamilton
-          group: tosco
+          destination: exchange.teste
+          group: fila
   rabbitmq:
     host: localhost
     username: admin

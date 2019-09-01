@@ -10,9 +10,9 @@ spring:
     cloud:
         stream:
             bindings:
-                output:
-                    destination: topico.hamilton
-                    group: tosco
+                teste-channel:
+                    destination: exchange.teste
+                    group: fila
     rabbitmq:
         host: localhost
         username: admin

@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class CloudStreamProducerApplication
+class Application
 
 fun main(args: Array<String>) {
-	runApplication<CloudStreamProducerApplication>(*args)
+	runApplication<Application>(*args)
 }

@@ -1,4 +1,4 @@
-package com.github.hfantin.cloudstreamproducer
+package com.github.hfantin.cloudstreamconsumer
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class CloudStreamProducerApplicationTests {
+class Application {
 
 	@Test
 	fun contextLoads() {
