@@ -1,8 +1,8 @@
 # Cursos
 
 ### Alura
-- Springboot - Parte 1
+- [Springboot - Partes 1 e 2](springboot/README.md)
 
 ### Outros
-- Kotlin intro
-- testes desempenho
+- [Kotlin intro](kotlin-intro/README.md)
+- [Testes desempenho](testes-desempenho/README.md)
