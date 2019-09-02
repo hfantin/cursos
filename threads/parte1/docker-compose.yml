@@ -1,0 +1,32 @@
+version: "2"
+services:
+  db:
+    image: mysql/mysql-server:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - "/home/hamilton/workspace/bb/docker/a:/docker-entrypoint-initdb.d"
+      - "/home/hamilton/workspace/bb/docker/b:/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=tradedb
+      - MYSQL_PASSWORD=tradedbsystem
+      - MYSQL_DATABASE=tradesys
+  rabbit:
+    image: rabbitmq:management
+    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+      - 25672:25672
+    environment:
+      - RABBITMQ_DEFAULT_USER=gecapsp
+      - RABBITMQ_DEFAULT_PASS=tradesystem
+
+  negociacao-b3:
+    build:
+      context: ../tds-negociacao-b3
+    hostname: tds-negociacao-b3
+    depends_on:
+      - rabbit
+      - barramento
