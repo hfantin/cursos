@@ -11,8 +11,11 @@ spring:
         stream:
             bindings:
                 teste-channel:
-                    destination: exchange.teste
-                    group: fila
+                    destination: teste
+                    group: grupo
+                    durableSubscription: true
+                    exchangeType: fanout # default topic
+                    expires: 300000 # ms
     rabbitmq:
         host: localhost
         username: admin

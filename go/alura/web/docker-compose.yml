@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  pg:
+    image: postgres:9.5
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: guest
+      POSTGRES_PASSWORD: guest
+      POSTGRES_DB:       test
+    volumes:
+      - .docker/postgres/data:/var/lib/postgresql/data

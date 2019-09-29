@@ -11,8 +11,8 @@ spring:
     stream:
       bindings:
         input:
-          destination: exchange.teste
-          group: fila
+          destination: teste
+          group: grupo
   rabbitmq:
     host: localhost
     username: admin
