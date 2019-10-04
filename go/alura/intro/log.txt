@@ -1,0 +1,16 @@
+03/10/2019 21:02:37.24868 - https://www.alura.com.br - online: true
+03/10/2019 21:02:37.84522 - https://random-status-code.herokuapp.com - online: true
+03/10/2019 21:02:38.28106 - https://www.caelum.com.br - online: true
+03/10/2019 21:02:38.54947 - https://www.casadocodigo.com.br - online: true
+03/10/2019 21:02:44.14457 - https://www.alura.com.br - online: true
+03/10/2019 21:02:44.7216 - https://random-status-code.herokuapp.com - online: true
+03/10/2019 21:02:44.98462 - https://www.caelum.com.br - online: true
+03/10/2019 21:02:45.21199 - https://www.casadocodigo.com.br - online: true
+03/10/2019 21:03:33.48058 - https://www.alura.com.br - online: true
+03/10/2019 21:03:34.05685 - https://random-status-code.herokuapp.com - online: true
+03/10/2019 21:03:34.48339 - https://www.caelum.com.br - online: true
+03/10/2019 21:03:34.80048 - https://www.casadocodigo.com.br - online: true
+03/10/2019 21:03:40.42940 - https://www.alura.com.br - online: true
+03/10/2019 21:03:41.01126 - https://random-status-code.herokuapp.com - online: false
+03/10/2019 21:03:41.29440 - https://www.caelum.com.br - online: true
+03/10/2019 21:03:41.51929 - https://www.casadocodigo.com.br - online: true
