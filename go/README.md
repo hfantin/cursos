@@ -1,3 +1,6 @@
+## criar modulos
+- go mod init github.com/hfantin/banco
+
 ## links
 [go by examples](https://gobyexample.com)   
 [variaveis em linha de comando](https://gobyexample.com/command-line-arguments)   
