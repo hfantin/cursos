@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item_grafico_barras_ponteiro" android:title="Grafico de barras com ponteiro" />
+    <item android:id="@+id/item_grafico_meia_lua" android:title="Grafico meia lua" />
+</menu>

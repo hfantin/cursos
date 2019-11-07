@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Cadastro</string>
+    <string name="title_activity_formulario">FormularioActivity</string>
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
+    <string name="endereco">Endereço</string>
+    <string name="site">Site</string>
+    <string name="salvar">Salvar</string>
+    <string name="excluir">Excluir</string>
+    <string name="mensagemExcluir">Deseja realmente excluir o registro?</string>
+    <string name="incluidoComSucesso">Aluno incluido com sucesso!</string>
+    <string name="alteradoComSucesso">Aluno alterado com sucesso!</string>
+    <string name="chegouSms">Chegou um SMS!!!</string>
+    <string name="mensagemErroAcessoLigacao">Não foi possivel efetuar a ligação.</string>
+    <string name="mensagemErroAcessoFoto">Não foi possivel tirar foto.</string>
+    <string name="ligar">Ligar</string>
+    <string name="enviarSms">Enviar SMS</string>
+    <string name="acharNoMapa">Achar no mapa</string>
+    <string name="navegarNoSite">Navegar no site</string>
+    <string name="mapa">Mapa</string>
+    <string name="baixarProvas">Baixar Provas</string>
+    <string name="enviarNotas">Enviar Notas</string>
+    <string name="incluirAluno">Incluir Aluno</string>
+    <string name="alterarAluno">Alterar Aluno</string>
+</resources>

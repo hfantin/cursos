@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_message"
+            android:hint="@string/edit_message"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_send"
+            android:onClick="enviarMensagem"/>
+
+
+        <Switch
+            android:id="@+id/teste"
+            android:showText="true"
+            android:layout_below="@+id/tvStateDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="+R$"
+            android:thumb="@drawable/customswitchselector"
+            android:track="@drawable/custom_track"
+            android:textOff="-R$"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:switchTextAppearance="@style/SwitchTextAppearance"
+            android:layout_centerHorizontal="true"/>
+
+    </LinearLayout>
+</layout>

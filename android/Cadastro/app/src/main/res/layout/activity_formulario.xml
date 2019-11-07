@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.caleum.cadastro.FormularioActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:id="@+id/containerFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="235dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/foto"
+                android:src="@drawable/person"
+                android:background="#00A8EC"
+                />
+
+            <Button
+                android:id="@+id/botao_foto"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/camera"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:elevation="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                />
+        </RelativeLayout>
+
+
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nome"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/telefone"
+            android:inputType="phone"
+            android:layout_marginBottom="10dp" />
+
+        <EditText
+            android:id="@+id/endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/endereco"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/site"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/site"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="10dp"/>
+
+        <RatingBar
+            android:id="@+id/nota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:numStars="5"
+            android:max="10"
+            android:layout_marginBottom="10dp"/>
+
+        <!--<Button-->
+            <!--android:id="@+id/botaoSalvar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:text="@string/salvar"-->
+            <!--android:layout_marginBottom="10dp"/>-->
+    </LinearLayout>
+</ScrollView>

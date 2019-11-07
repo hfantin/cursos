@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Grafico">
+        <attr name="ajustar_tamanho_icone" format="boolean" />
+        <attr name="alerta_background" format="reference" />
+        <attr name="altura_barras" format="dimension" />
+        <attr name="cuidado_background" format="reference" />
+        <attr name="desenhar_ponteiro" format="boolean" />
+        <attr name="desenhar_etiqueta_referencia" format="boolean" />
+        <attr name="etiqueta_receitas_background" format="color" />
+        <attr name="etiqueta_referencia_background" format="color" />
+        <attr name="etiqueta_total_background" format="color" />
+        <attr name="etiqueta_padding" format="dimension" />
+        <attr name="exibir_barra_minima" format="boolean" />
+        <attr name="icone_ponteiro" format="reference" />
+        <attr name="inverter_etiquetas" format="boolean" />
+        <attr name="ok_background" format="reference" />
+        <attr name="percentual_alerta" format="integer" />
+        <attr name="tamanho_texto_valores" format="dimension" />
+        <attr name="texto_valor_receitas" format="string" />
+        <attr name="texto_valor_referencia" format="string" />
+        <attr name="texto_valor_total" format="string" />
+    </declare-styleable>
+</resources>

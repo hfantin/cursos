@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/valor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" />
+
+    <com.hfantin.hac.componentes.GraficoBarrasPonteiro
+        android:id="@+id/grafico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:altura_barras="15dp"
+        app:exibir_barra_minima="true"
+        app:desenhar_ponteiro="true"
+        app:desenhar_etiqueta_referencia="true"
+        app:etiqueta_receitas_background="@color/azul"
+        app:etiqueta_total_background="@color/verde"
+        app:ok_background="@drawable/vermelho_gradiente"
+        app:cuidado_background="@drawable/cinza_gradiente"
+        app:texto_valor_receitas="Receitas"
+        app:texto_valor_referencia="Recomendado "
+        app:texto_valor_total="Gasto Atual "
+        app:tamanho_texto_valores="12sp"
+        app:ajustar_tamanho_icone="true"
+        app:inverter_etiquetas="true"
+         />
+
+    <!--
+ app:altura_barras="15dp"
+        app:exibir_barra_minima="true"
+        app:desenhar_ponteiro="false"
+        app:desenhar_etiqueta_referencia="false"
+        app:etiqueta_receitas_background="@color/azul"
+        app:etiqueta_total_background="@color/verde"
+        app:ok_background="@drawable/vermelho_gradiente"
+        app:cuidado_background="@drawable/cinza_gradiente"
+        app:texto_valor_receitas="Receitas"
+        app:texto_valor_referencia="Recomendado "
+        app:texto_valor_total="Gasto Atual "
+        app:tamanho_texto_valores="12sp"
+        app:ajustar_tamanho_icone="false"
+        app:inverter_etiquetas="false"
+     -->
+
+    <SeekBar
+        android:id="@+id/limite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:max="15000" />
+</LinearLayout>

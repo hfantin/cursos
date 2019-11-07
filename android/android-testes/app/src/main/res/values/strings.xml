@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">android-teste</string>
+    <string name="edit_message">Digite a mensagem</string>
+    <string name="button_send">Enviar</string>
+</resources>

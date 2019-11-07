@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp">
+        <TextView
+            android:id="@+id/laptop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:tint="#c0c0c0"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/botao_adicionar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Criar nova categoria"
+        android:gravity="left"
+        android:background="@android:color/transparent"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">Carangos</string>
+    <string name="carregando">Carregando lista de publicações…</string>
+    <string name="erroBuscarDados">Erro ao buscar dados</string>
+
+</resources>

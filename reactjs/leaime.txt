@@ -1,0 +1,48 @@
+Criação do projeto
+
+	npm i create-react-app
+    ./node_modules/.bin/create-react-app cdc-admin
+    cd cdc-admin && npm start
+    acessar http://localhost:3000 no navegador
+
+Backend 
+
+    cdc-admin:
+        Jar: http://bit.ly/jar-api-curso-react .
+        Código fonte: https://github.com/alberto-alura/cdcadmin-api.
+        instruções: instalar mysql - apt-get install mysql-server
+                    se possuir senha, executar: 
+                        java -Dspring.datasource.password=sua_senha -jar cdcreact_<VERSAO>.jar
+
+        ou acessar no Heroku:
+            https://cdc-react.herokuapp.com/api/autores
+
+    instalura:
+
+        Acesse o endereço http://localhost:8080/gera/dados para que a aplicação possa salvar os dados necessários para utilizarmos no Instalura.
+
+        São gerados os seguintes usuários e suas senhas:
+
+            usuário = alots, senha = 123456;
+            usuário = rafael, senha = 123456;
+            usuário = vitor, senha = 123456
+
+        ou 
+        
+        https://instalura-api.herokuapp.com/api
+
+
+CSS: https://purecss.io/
+
+
+Scripts:
+
+    build - npm run build
+
+
+Links: 
+
+    node.green  -- novidades do node
+    jsonlint.com
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    tools:context="br.com.caleum.cadastro.ListaAlunosActivity">
+
+
+    <ListView
+        android:id="@+id/listaAlunos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ListView>
+
+    <Button
+        android:id="@+id/botaoFlutuante"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/fundo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="+"
+        android:textSize="40sp"
+        android:textColor="#FFF"
+        android:elevation="10dp"
+
+
+        />
+
+</RelativeLayout>

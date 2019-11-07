@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- teste -->
+        <jogodaforca.alura.com.br.jogodaforca.ForcaView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/fvJogo"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLetraUsadas"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/etLetra"
+            android:layout_gravity="center_horizontal|bottom"
+            android:maxLength="1"
+            android:textSize="30dp"
+            android:enabled="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btJogar"
+            android:enabled="false"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="Jogar"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btIniciar"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="Iniciar"/>
+    </LinearLayout>
