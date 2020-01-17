@@ -2,15 +2,7 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: 'fornecedor'
-  datasource:
-    password: admin
-    username: admin
-    url: jdbc:postgresql://localhost:5432/fornecedor
   jpa:
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
