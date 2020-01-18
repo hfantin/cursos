@@ -1,7 +1,6 @@
 package com.github.hfantin.fornecedor.service
 
-import com.github.hfantin.fornecedor.model.InfoFornecedor
-import org.slf4j.LoggerFactory
+import com.github.hfantin.fornecedor.repository.InfoRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

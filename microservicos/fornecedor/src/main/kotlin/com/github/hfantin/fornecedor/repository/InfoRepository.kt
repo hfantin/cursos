@@ -1,4 +1,4 @@
-package com.github.hfantin.fornecedor.service
+package com.github.hfantin.fornecedor.repository
 
 import com.github.hfantin.fornecedor.model.InfoFornecedor
 import org.springframework.data.repository.CrudRepository

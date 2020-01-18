@@ -1,6 +1,7 @@
 package com.github.hfantin.loja.controller
 
 import com.github.hfantin.loja.controller.dto.CompraDTO
+import com.github.hfantin.loja.model.Compra
 import com.github.hfantin.loja.service.CompraService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,8 +21,5 @@ class CompraController {
 
 
     @RequestMapping(method = [RequestMethod.POST])
-    fun realizaCompra(@RequestBody compra: CompraDTO?) {
-        compraService.realizaCompra(compra)
-        logger.info("dto: {}", compra)
-    }
+    fun realizaCompra(@RequestBody compra: CompraDTO) = compraService.realizaCompra(compra)
 }
