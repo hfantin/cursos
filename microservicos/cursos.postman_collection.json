@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"itens\": [\n\t\t{ \"id\": 1, \"quantidade\": 1}, \n\t\t{ \"id\": 2, \"quantidade\": 2}\n\t],\n\t\"endereco\": {\n\t\t\"rua\": \"rua 1\", \n\t\t\"numero\": \"123\", \n\t\t\"estado\": \"SP\"\n\t}\n}",
+							"raw": "{\n    \"itens\": [\n        {\n            \"id\": 1,\n            \"quantidade\": 10\n        },\n        {\n            \"id\": 2,\n            \"quantidade\": 20\n        }\n    ],\n    \"endereco\": {\n        \"rua\": \"rua 1\",\n        \"numero\": \"123\",\n        \"estado\": \"SP\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,6 +37,75 @@
 							"port": "8082",
 							"path": [
 								"compra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/produto/SP",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"produto",
+								"SP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": 1,\n        \"quantidade\": 4\n    },\n    {\n        \"id\": 2,\n        \"quantidade\": 2\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/pedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"pedido"
 							]
 						}
 					},
