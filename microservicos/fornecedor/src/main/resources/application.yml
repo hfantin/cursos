@@ -1,7 +1,10 @@
 server:
   port: 8081
 
+
 spring:
+  datasource:
+    initialization-mode: always
   jpa:
     properties:
       hibernate:
