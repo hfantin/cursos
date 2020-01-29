@@ -4,6 +4,7 @@ import com.github.hfantin.loja.client.FornecedorClient
 import com.github.hfantin.loja.controller.dto.CompraDTO
 import com.github.hfantin.loja.controller.dto.InfoFornecedorDTO
 import com.github.hfantin.loja.model.Compra
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpMethod
@@ -22,8 +23,10 @@ class CompraService {
 //    @Autowired
 //    private lateinit var client: RestTemplate
 
+    @HystrixCommand(fallbackMethod = "realizaCompraFallback")
     fun realizaCompra(compra: CompraDTO): Compra {
         logger.info("fazer compra")
+//        Thread.sleep(5000L)
 /*
         val exchange: ResponseEntity<InfoFornecedorDTO> = client.exchange("http://fornecedor/info/" + compra?.endereco?.estado,
                 HttpMethod.GET, null, InfoFornecedorDTO::class.java)
@@ -35,5 +38,10 @@ class CompraService {
         logger.info("pedido via feign: {}", pedido)
         logger.info("info via feign: {}", info)
         return Compra(pedido.id, pedido.tempoDePreparo, "${compra.endereco.rua}, ${compra.endereco.numero} - ${compra.endereco.estado}")
+    }
+
+    fun realizaCompraFallback(compra: CompraDTO): Compra {
+        logger.info("fallback");
+        return Compra().apply { endereco = "fallback ${compra.endereco.rua}, ${compra.endereco.numero} - ${compra.endereco.estado}" }
     }
 }
