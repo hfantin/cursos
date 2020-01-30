@@ -9,7 +9,7 @@
 			"name": "microservicos-alura",
 			"item": [
 				{
-					"name": "compra",
+					"name": "loja - compra",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -43,7 +43,33 @@
 					"response": []
 				},
 				{
-					"name": "produto",
+					"name": "loja - pedido por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8082/compra/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"compra",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fornecedor - produto",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -78,7 +104,7 @@
 					"response": []
 				},
 				{
-					"name": "pedido",
+					"name": "fornecedor - pedido",
 					"request": {
 						"method": "POST",
 						"header": [
