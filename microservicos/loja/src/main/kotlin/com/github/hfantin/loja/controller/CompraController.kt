@@ -1,6 +1,6 @@
 package com.github.hfantin.loja.controller
 
-import com.github.hfantin.loja.controller.dto.CompraDTO
+import com.github.hfantin.loja.dto.CompraDTO
 import com.github.hfantin.loja.service.CompraService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired

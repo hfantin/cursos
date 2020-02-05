@@ -1,8 +1,8 @@
 package com.github.hfantin.loja.client
 
-import com.github.hfantin.loja.controller.dto.InfoFornecedorDTO
-import com.github.hfantin.loja.controller.dto.InfoPedidoDTO
-import com.github.hfantin.loja.controller.dto.ItemDaCompraDTO
+import com.github.hfantin.loja.dto.InfoFornecedorDTO
+import com.github.hfantin.loja.dto.InfoPedidoDTO
+import com.github.hfantin.loja.dto.ItemDaCompraDTO
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
