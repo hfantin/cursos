@@ -69,6 +69,44 @@
 					"response": []
 				},
 				{
+					"name": "fornecedor - info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"itens\": [\n\t\t{ \"id\": 1, \"quantidade\": 1}, \n\t\t{ \"id\": 2, \"quantidade\": 2}\n\t],\n\t\"endereco\": {\n\t\t\"rua\": \"rua 1\", \n\t\t\"numero\": \"123\", \n\t\t\"estado\": \"SP\"\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/info/MG",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"info",
+								"MG"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "fornecedor - produto",
 					"request": {
 						"method": "POST",
@@ -138,7 +176,41 @@
 					"response": []
 				},
 				{
-					"name": "info",
+					"name": "transportador - entrega",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/entrega",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"entrega"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gateway - routes",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -154,7 +226,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"itens\": [\n\t\t{ \"id\": 1, \"quantidade\": 1}, \n\t\t{ \"id\": 2, \"quantidade\": 2}\n\t],\n\t\"endereco\": {\n\t\t\"rua\": \"rua 1\", \n\t\t\"numero\": \"123\", \n\t\t\"estado\": \"SP\"\n\t}\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -162,14 +234,55 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/info/MG",
+							"raw": "http://localhost:5555/actuator/routes",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "5555",
 							"path": [
+								"actuator",
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gateway - fornecedor info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/fornecedor/info/SP",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"fornecedor",
 								"info",
-								"MG"
+								"SP"
 							]
 						}
 					},
