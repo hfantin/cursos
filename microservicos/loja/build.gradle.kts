@@ -28,6 +28,9 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
+	implementation("org.springframework.cloud:spring-cloud-starter-oauth2")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
 	runtimeOnly("org.postgresql:postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {

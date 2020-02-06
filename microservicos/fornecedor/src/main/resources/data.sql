@@ -1,3 +1,7 @@
+truncate table public.info_fornecedor;
+truncate table public.produto cascade;
+truncate table public.pedido cascade;
+
 INSERT INTO public.info_fornecedor (endereco,estado,nome) VALUES
 ('Rua 25 de Março, 1023','SP','Mario')
 ,('Rua Libero Badaro, 582','MG','Joselito')
