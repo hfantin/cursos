@@ -11,6 +11,16 @@
 				{
 					"name": "loja - compra",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -45,6 +55,16 @@
 				{
 					"name": "loja - pedido por id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -74,6 +94,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -93,14 +116,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/info/MG",
+							"raw": "localhost:8081/info/SP",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
 								"info",
-								"MG"
+								"SP"
 							]
 						}
 					},
@@ -109,6 +132,9 @@
 				{
 					"name": "fornecedor - produto",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -144,6 +170,16 @@
 				{
 					"name": "fornecedor - pedido",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -283,6 +319,52 @@
 								"fornecedor",
 								"info",
 								"SP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gateway - fornecedor - pedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": 1,\n        \"quantidade\": 4\n    },\n    {\n        \"id\": 2,\n        \"quantidade\": 2\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/fornecedor/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"fornecedor",
+								"pedido"
 							]
 						}
 					},
