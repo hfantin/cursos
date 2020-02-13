@@ -1,7 +1,7 @@
 // uma das formas do compilador aceitar a variavel $ do jquery:
 // declare var $: any;
 
-abstract class View<T> {
+export abstract class View<T> {
 
     private _elemento: JQuery;
     
