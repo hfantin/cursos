@@ -1,30 +1,25 @@
 fun testaLacos() {
-    // for (i in 5 downTo 1) - inverso
-    // for (i in 5 downTo 1 step 2) - inverso pulando os pares
-    for (i in 1..5) {
-        val titular = "tosco $i"
-        val conta = 1000 + i
+    var i = 0
+    while (i < 5) {
+        val titular: String = "Alex $i"
+        val numeroConta: Int = 1000 + i
         var saldo = i + 10.0
+
         println("titular $titular")
-        println("conta  $conta")
-        println("saldo $saldo")
-        testaCondicoes(saldo)
+        println("número da conta $numeroConta")
+        println("saldo da conta $saldo")
         println()
+        i++
     }
-}
-fun testaCondicoes(saldo: Double) {
-    /*
-    if (saldo > 0.0) {
-        println("saldo é positivo")
-    } else if(saldo == 0.0) {
-        println("saldo é neutro")
-    } else {
-        println("saldo é negativo")
-    }
-    */
-    when {
-        saldo > 0.0 -> println("saldo é positivo")
-        saldo == 0.0 -> println("saldo é neutro")
-        else -> println("saldo é negativo")
+
+    for (i in 5 downTo 1) {
+        val titular: String = "Alex $i"
+        val numeroConta: Int = 1000 + i
+        var saldo = i + 10.0
+
+        println("titular $titular")
+        println("número da conta $numeroConta")
+        println("saldo da conta $saldo")
+        println()
     }
 }

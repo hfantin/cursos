@@ -1,39 +1,64 @@
-import model.funcionario.Analista
-import model.funcionario.Diretor
-import model.funcionario.Gerente
-
 fun testaFuncionarios() {
-
-
-    val funcionario = Analista(
-        nome = "Analista",
+    val alex = Analista(
+        nome = "Alex",
         cpf = "111.111.111-11",
         salario = 1000.0
     )
 
-    val gerente = Gerente(
-        nome = "Gerente",
-        cpf = "222.222.2222-22",
+    println("nome ${alex.nome}")
+    println("cpf ${alex.cpf}")
+    println("salario ${alex.salario}")
+    println("bonificação ${alex.bonificacao}")
+
+    val fran = Gerente(
+        nome = "Fran",
+        cpf = "222.222.222-22",
         salario = 2000.0,
         senha = 1234
     )
 
-    val diretor = Diretor(
-        nome = "Diretor",
+    println("nome ${fran.nome}")
+    println("cpf ${fran.cpf}")
+    println("salario ${fran.salario}")
+    println("bonificação ${fran.bonificacao}")
+
+    if (fran.autentica(1234)) {
+        println("autenticou com sucesso")
+    } else {
+        println("falha na autenticação")
+    }
+
+    val gui = Diretor(
+        nome = "Gui",
         cpf = "333.333.333-33",
         salario = 4000.0,
         senha = 4000,
         plr = 200.0
     )
 
-    val calculadora = Calculadora()
-    calculadora.registra(funcionario)
-    calculadora.registra(gerente)
-    calculadora.registra(diretor)
+    println("nome ${gui.nome}")
+    println("cpf ${gui.cpf}")
+    println("salario ${gui.salario}")
+    println("bonificação ${gui.bonificacao}")
+    println("plr ${gui.plr}")
 
-    println("$funcionario bonus=${funcionario.bonificacao}")
-    println("$gerente bonus=${gerente.bonificacao} autenticado=${gerente.autenticacao(1234)}")
-    println("$diretor bonus=${diretor.bonificacao} autenticado=${diretor.autenticacao(1234)}")
+    if (gui.autentica(4000)) {
+        println("autenticou com sucesso")
+    } else {
+        println("falha na autenticação")
+    }
 
-    println("total de bonificações=${calculadora.total}")
+    val maria = Analista(
+        nome = "Maria",
+        cpf = "444.444.444-44",
+        salario = 3000.0
+    )
+
+    val calculadora = CalculadoraBonificacao()
+    calculadora.registra(alex)
+    calculadora.registra(fran)
+    calculadora.registra(gui)
+    calculadora.registra(maria)
+
+    println("total de bonificação: ${calculadora.total}")
 }

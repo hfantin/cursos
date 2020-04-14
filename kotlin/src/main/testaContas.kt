@@ -1,3 +1,5 @@
+package main
+
 import model.conta.Conta
 import model.conta.ContaCorrente
 import model.conta.ContaPoupanca

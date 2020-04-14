@@ -1,3 +1,5 @@
+package main
+
 import model.funcionario.Funcionario
 
 class Calculadora {
