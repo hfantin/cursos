@@ -1,4 +1,4 @@
-### Exercicios do curso de kotlin da alura
+# Exercicios do curso de kotlin da alura
 
 ### Links
 [tipos de dados primitivos](https://kotlinlang.org/docs/tutorials/kotlin-for-py/primitive-data-types-and-their-limitations.html)  
@@ -7,3 +7,5 @@
 [object expressions](https://kotlinlang.org/docs/reference/object-declarations.html)
 [singleton](https://en.wikipedia.org/wiki/Singleton_pattern#Common_uses)
 [por que usar 31 no hashcode](https://stackoverflow.com/questions/299304/why-does-javas-hashcode-in-string-use-31-as-a-multiplier)
+[padrao delegate](https://en.wikipedia.org/wiki/Delegation_pattern)
+[null safety](https://kotlinlang.org/docs/reference/null-safety.html#null-safety)

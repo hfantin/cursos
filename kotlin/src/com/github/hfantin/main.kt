@@ -1,13 +1,46 @@
 package com.github.hfantin
 
+import com.github.hfantin.modelo.Autenticavel
 import com.github.hfantin.modelo.Endereco
+import com.github.hfantin.modelo.SistemaInterno
+
 
 fun main() {
+//    var enderecoNulo: Endereco? = Endereco(logradouro = "Rua vergueiro", complemento = "123")
+//    var logradouro: String? = enderecoNulo?.logradouro
+//    enderecoNulo?.let {
+//        println(it.logradouro.length)
+//        val tamanhoComplemento = it.complemento?.length ?: throw IllegalArgumentException("Complementeo não pode ser vazio")
+//        println("tamanhoComplemento $tamanhoComplemento")
+//
+//    }
 
-    val endereco1  = Endereco("Rua vergueiro" ,1000, cep="00000-000")
-    val endereco2 = Endereco("Rua vergueiro" ,1000, cep="00000-000")
-    println(endereco1 == endereco2)
-    println(endereco1.hashCode())
-    println(endereco2.hashCode())
+//    testaFuncoes()
+    Endereco(logradouro = "Rua vergueiro", numero = 1234)
+        .let {
+            "${it.logradouro}, ${it.numero}".toUpperCase()
+        }.let(::println)
+
+    listOf(Endereco(complemento = "casa"), Endereco(), Endereco(complemento = "apartamento"))
+        .filter { it.complemento?.isNotEmpty() ?: false }
+            
+        .let(::println)
+
+
+    soma(2, 3) {
+        println(it)
+    }
+
+    val autenticavel = object : Autenticavel {
+        val senha = 1234
+        override fun autentica(senha: Int) = this.senha == senha
+    }
+
+    SistemaInterno().entra(autenticavel, 1234, autenticado = {
+        println("realizar pagamento")
+    })
 }
 
+private fun soma(a: Int, b: Int, resultado: (Int) -> Unit) {
+    resultado(a + b)
+}

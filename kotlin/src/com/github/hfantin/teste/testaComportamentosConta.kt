@@ -1,14 +1,16 @@
 package com.github.hfantin.teste
 
+import com.github.hfantin.exception.FalhaAutenticacaoException
+import com.github.hfantin.exception.SaldoInsuficienteException
 import com.github.hfantin.modelo.Cliente
 import com.github.hfantin.modelo.ContaCorrente
 import com.github.hfantin.modelo.ContaPoupanca
 
 fun testaComportamentosConta() {
-    val contaAlex = ContaCorrente(titular = Cliente(nome = "Alex", cpf = "", senha = 1) , numero = 1000)
+    val contaAlex = ContaCorrente(titular = Cliente(nome = "Alex", cpf = "", senha = 1), numero = 1000)
     contaAlex.deposita(200.0)
 
-    val contaFran = ContaPoupanca(numero = 1001, titular = Cliente(nome = "Fran", cpf = "", senha = 1) )
+    val contaFran = ContaPoupanca(numero = 1001, titular = Cliente(nome = "Fran", cpf = "", senha = 1))
     contaFran.deposita(300.0)
 
     println(contaFran.titular)
@@ -45,10 +47,18 @@ fun testaComportamentosConta() {
 
     println("Transferência da conta da Fran para o Alex")
 
-    if (contaFran.transfere(destino = contaAlex, valor = 300.0)) {
+    try {
+        contaFran.transfere(destino = contaAlex, valor = 100.0, senha = 3)
         println("Transferência sucedida")
-    } else {
-        println("Falha na transferência")
+    } catch (e: SaldoInsuficienteException) {
+        println("Saldo insuficiente")
+        e.printStackTrace()
+    } catch (e: FalhaAutenticacaoException) {
+        println("Falha na autenticacao")
+        e.printStackTrace()
+    } catch (e: Exception) {
+        println("Erro desconhecido")
+        e.printStackTrace()
     }
 
     println(contaAlex.saldo)
