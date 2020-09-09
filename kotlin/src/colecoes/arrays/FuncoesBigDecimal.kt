@@ -1,4 +1,4 @@
-package colecoes
+package colecoes.arrays
 
 import java.math.BigDecimal
 
