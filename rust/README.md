@@ -3,7 +3,7 @@
 
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch04-03-slices.html
+https://doc.rust-lang.org/book/ch05-00-structs.html
 
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
