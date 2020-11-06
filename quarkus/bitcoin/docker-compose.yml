@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=hfantin
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=bitcoin
+    volumes:
+      - ./db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "111.111.10.0/24"
