@@ -15,5 +15,5 @@ data class Ordem(
         var data: LocalDate = LocalDate.now(),
         var status: String = "Enviada",
         @Column(name = "user_id")
-        var userId: Int = 0
+        var userId: Long = 0
 )
