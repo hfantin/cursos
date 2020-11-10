@@ -4,7 +4,7 @@
 
 ## last readed chapter
 https://doc.rust-lang.org/book/ch05-02-example-structs.html
-https://doc.rust-lang.org/book/ch06-00-enums.html
+https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html
 
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
