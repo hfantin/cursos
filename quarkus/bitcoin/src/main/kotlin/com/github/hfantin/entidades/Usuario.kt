@@ -5,6 +5,7 @@ import io.quarkus.security.jpa.Password
 import io.quarkus.security.jpa.Roles
 import io.quarkus.security.jpa.UserDefinition
 import io.quarkus.security.jpa.Username
+import javax.json.bind.annotation.JsonbTransient
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -26,6 +27,7 @@ data class Usuario(
         var username: String = "",
         @field:NotBlank(message="Senha invalida")
         @Password
+        @JsonbTransient
         var password: String = "",
         @Roles
         var role: String = ""

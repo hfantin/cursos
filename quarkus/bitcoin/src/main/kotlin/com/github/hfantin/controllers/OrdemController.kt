@@ -7,9 +7,7 @@ import javax.annotation.security.RolesAllowed
 import javax.inject.Inject
 import javax.transaction.Transactional
 import javax.validation.Valid
-import javax.ws.rs.Consumes
-import javax.ws.rs.POST
-import javax.ws.rs.Path
+import javax.ws.rs.*
 import javax.ws.rs.core.Context
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.SecurityContext
@@ -38,4 +36,9 @@ class OrdemController {
 
         ordemRepository.persist(ordem)
     }
+
+    @GET
+    @RolesAllowed("admin")
+    @Produces(MediaType.APPLICATION_JSON)
+    fun listar() = ordemRepository.listAll()
 }

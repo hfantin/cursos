@@ -3,9 +3,8 @@ package com.github.hfantin.controllers
 import com.github.hfantin.entidades.Usuario
 import com.github.hfantin.entidades.adicionar
 import com.github.hfantin.repositories.UsuarioRepository
-import com.github.hfantin.services.BitcoinService
-import org.eclipse.microprofile.rest.client.inject.RestClient
 import javax.annotation.security.PermitAll
+import javax.annotation.security.RolesAllowed
 import javax.inject.Inject
 import javax.transaction.Transactional
 import javax.validation.Valid
@@ -27,4 +26,9 @@ class UsuarioController {
         usuario.adicionar()
         usuarioRepository.persist(usuario)
     }
+
+    @GET
+    @RolesAllowed("admin")
+    @Produces(MediaType.APPLICATION_JSON)
+    fun listar() = usuarioRepository.listAll()
 }
