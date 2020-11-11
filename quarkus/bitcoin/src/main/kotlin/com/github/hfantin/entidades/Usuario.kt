@@ -18,23 +18,23 @@ data class Usuario(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long = 0L,
-        @field:NotBlank(message="Nome invalido")
+        @field:NotBlank(message = "Nome invalido")
         var nome: String = "",
-        @field:NotBlank(message="CPF invalido")
+        @field:NotBlank(message = "CPF invalido")
         var cpf: String = "",
-        @field:NotBlank(message="Usuario invalido")
+        @field:NotBlank(message = "Usuario invalido")
         @Username
         var username: String = "",
-        @field:NotBlank(message="Senha invalida")
+        @field:NotBlank(message = "Senha invalida")
         @Password
-        @JsonbTransient
+//        @JsonbTransient
         var password: String = "",
         @Roles
         var role: String = ""
 )
 
 
-fun Usuario.adicionar(){
-        this.password = BcryptUtil.bcryptHash(this.password)
-        this.role = if (this.username == "alura") "admin" else "user"
+fun Usuario.adicionar() {
+    this.password = BcryptUtil.bcryptHash(this.password)
+    this.role = if (this.username == "alura") "admin" else "user"
 }
