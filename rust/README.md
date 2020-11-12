@@ -3,9 +3,7 @@
 
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch05-02-example-structs.html
-https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html
-https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html
+https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#using-external-packages
 
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.

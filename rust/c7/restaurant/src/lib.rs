@@ -47,6 +47,10 @@ mod back_of_house {
     }
 }
 
+use crate::front_of_house::hosting;
+// or with relative path
+// use self::front_of_house::hosting;
+
 pub fn eat_at_restaurant() {
     // Absolute path - like /front_of_house/hosting/add_to_waitlist where the keyword "crate" is like /
     crate::front_of_house::hosting::add_to_waitlist();
@@ -66,4 +70,8 @@ pub fn eat_at_restaurant() {
 
      let order1 = back_of_house::Appetizer::Soup;
      let order2 = back_of_house::Appetizer::Salad;
+
+
+     // using keyword use - similar to create symbolic link in the filesytem
+     hosting::add_to_waitlist()
 }
