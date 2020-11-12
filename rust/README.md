@@ -4,13 +4,13 @@
 
 ## last readed chapter
 https://doc.rust-lang.org/book/ch05-02-example-structs.html
-https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html
+https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html
 
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
 
-
+ss
 ### floating point operations format
 > let difference = 0.1 + 0.2;
 > println!("{0:.2?}", difference);
