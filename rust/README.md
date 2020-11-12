@@ -3,8 +3,7 @@
 
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#using-external-packages
-
+https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#using-nested-paths-to-clean-up-large-use-lists
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
