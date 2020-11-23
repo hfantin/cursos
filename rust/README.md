@@ -4,6 +4,7 @@
 
 ## last readed chapter
 https://doc.rust-lang.org/book/ch08-02-strings.html
+https://doc.rust-lang.org/book/ch08-03-hash-maps.html
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
