@@ -1,3 +1,4 @@
+// traits are similar to interfaces in other languages 
 
 fn greater(list: &[i32]) -> &i32 {
     let mut num = &list[0];
