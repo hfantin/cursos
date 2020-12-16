@@ -40,6 +40,16 @@ impl Summary for Tweet {
 }
 
 
+// trait as parameter
+fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+
+// This do the same as notify using trait bounds syntax
+fn notify_bounds<T: Summary>(item: &T){
+    println!("Breaking news with trait bounds! {}", item.summarize());
+}
 
 fn main() {
     println!("Traits!");
@@ -52,4 +62,9 @@ fn main() {
     };
 
     println!("1 new tweet: {}", tweet.summarize());
+
+    notify(&tweet);
+    notify_bounds(&tweet);
 }
+
+

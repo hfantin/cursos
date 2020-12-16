@@ -3,11 +3,7 @@
 
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch08-02-strings.html
-https://doc.rust-lang.org/book/ch08-03-hash-maps.html
-https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#propagating-errors
-https://doc.rust-lang.org/book/ch10-02-traits.html
-https://doc.rust-lang.org/book/ch10-02-traits.html#traits-as-parameters
+https://doc.rust-lang.org/book/ch10-02-traits.html#specifying-multiple-trait-bounds-with-the--syntax
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
