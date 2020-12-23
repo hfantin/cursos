@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub trait Summary {
     fn summarize_author(&self) -> String;
     // fn summarize(&self) -> String;
@@ -41,14 +43,32 @@ impl Summary for Tweet {
 
 
 // trait as parameter
+//fn notify_multiple(item: &(impl Summary + Display)) {
 fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
 
 
 // This do the same as notify using trait bounds syntax
+// fn notify_bounds_multiple<T: Summary + Display>(item: &T){
+// or with where:
+// fn notify_bounds_multiple<T>(item: &T) where T: Summary + Display
 fn notify_bounds<T: Summary>(item: &T){
     println!("Breaking news with trait bounds! {}", item.summarize());
+}
+
+
+
+// returning a trait
+fn returns_summarize() -> impl Summary {
+    Tweet{
+        username: String::from("horse_ebooks"), 
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
+    }
 }
 
 fn main() {
