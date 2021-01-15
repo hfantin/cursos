@@ -5,7 +5,7 @@
 ## last readed chapter
 https://doc.rust-lang.org/book/ch10-02-traits.html#specifying-multiple-trait-bounds-with-the--syntax
 https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html
-https://doc.rust-lang.org/book/ch11-00-testing.html
+https://doc.rust-lang.org/book/ch11-01-writing-tests.html#checking-results-with-the-assert-macro
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
