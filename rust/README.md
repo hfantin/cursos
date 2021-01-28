@@ -3,8 +3,7 @@
 
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch12-04-testing-the-librarys-functionality.html
-https://doc.rust-lang.org/book/ch12-06-writing-to-stderr-instead-of-stdout.html
+https://doc.rust-lang.org/book/ch13-00-functional-features.html
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
