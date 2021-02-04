@@ -4,6 +4,7 @@
 
 ## last readed chapter
 https://doc.rust-lang.org/book/ch13-00-functional-features.html
+https://doc.rust-lang.org/book/ch13-01-closures.html#closure-type-inference-and-annotation
 ### exercicios
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
