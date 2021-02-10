@@ -1,12 +1,10 @@
 # Exercises of the rust book
 - [the book](https://doc.rust-lang.org/book/)
 
-
 ## last readed chapter
-https://doc.rust-lang.org/book/ch13-00-functional-features.html
-https://doc.rust-lang.org/book/ch13-01-closures.html#closure-type-inference-and-annotation
-https://doc.rust-lang.org/book/ch13-01-closures.html#limitations-of-the-cacher-implementation
-### exercicios
+https://doc.rust-lang.org/book/ch13-02-iterators.html
+
+### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
 
@@ -19,7 +17,7 @@ Generate the nth Fibonacci number.
 > println!("{number:.prec$?}", prec = 2, > > > number = difference);
 
 
-### tests
+### tests commands
 - passing arguments: 
 > cargo test -- --help
 - one thread:
@@ -37,3 +35,9 @@ Generate the nth Fibonacci number.
 ### patterns
 
 memoization(keep in memory) or lazy evaluation: a struct that will hold the closure and the resulting value of calling the closure. The struct will execute the closure only if we need the resulting value, and it will cache the resulting value so the rest of our code doesn’t have to be responsible for saving and reusing the result
+
+
+
+### Cross compiling:
+- [example](https://exceptionshub.com/cross-compile-a-rust-application-from-linux-to-windows.html)
+- rustup target list

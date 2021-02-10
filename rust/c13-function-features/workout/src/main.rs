@@ -33,10 +33,20 @@ where
 }
 
 fn main() {
-    let simulated_user_specified_value = 10;
-    let simulated_random_number = 7;
+    // let simulated_user_specified_value = 10;
+    // let simulated_random_number = 7;
 
-    generate_workout(simulated_user_specified_value, simulated_random_number);
+    // generate_workout(simulated_user_specified_value, simulated_random_number);
+
+    // using variables from scope
+
+    let x = vec![1, 2, 3];
+    // wiht move, you will take ownership of the values in the envrironment
+    let equal_to_x = move |z| z == x;
+    // this will cause an error
+    // println!("can't use x here: {:?}", x);
+    let y = vec![1, 2, 3];
+    println!("{:?}", equal_to_x(y));
 }
 
 fn generate_workout(intensity: u32, random_number: u32) {
