@@ -2,7 +2,7 @@
 - [the book](https://doc.rust-lang.org/book/)
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch13-02-iterators.html
+https://doc.rust-lang.org/book/ch13-03-improving-our-io-project.html
 
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
