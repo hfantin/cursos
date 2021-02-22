@@ -2,7 +2,8 @@
 - [the book](https://doc.rust-lang.org/book/)
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch13-03-improving-our-io-project.html
+https://doc.rust-lang.org/book/ch14-00-more-about-cargo.html
+https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html
 
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
@@ -41,3 +42,12 @@ memoization(keep in memory) or lazy evaluation: a struct that will hold the clos
 ### Cross compiling:
 - [example](https://exceptionshub.com/cross-compile-a-rust-application-from-linux-to-windows.html)
 - rustup target list
+
+
+### Docs
+- [cargo](https://doc.rust-lang.org/cargo/)
+
+
+### documentation commands
+- cargo doc
+- cargo doc --open
