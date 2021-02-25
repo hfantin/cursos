@@ -2,9 +2,7 @@
 - [the book](https://doc.rust-lang.org/book/)
 
 ## last readed chapter
-https://doc.rust-lang.org/book/ch14-00-more-about-cargo.html
-https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html
-
+https://doc.rust-lang.org/book/ch15-00-smart-pointers.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
