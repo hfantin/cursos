@@ -3,6 +3,8 @@
 
 ## last readed chapter
 https://doc.rust-lang.org/book/ch15-00-smart-pointers.html
+https://doc.rust-lang.org/book/ch15-01-box.html
+https://doc.rust-lang.org/book/ch15-02-deref.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
