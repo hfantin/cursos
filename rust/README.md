@@ -7,6 +7,7 @@ https://doc.rust-lang.org/book/ch15-01-box.html
 https://doc.rust-lang.org/book/ch15-02-deref.html
 https://doc.rust-lang.org/book/ch15-03-drop.html
 https://doc.rust-lang.org/book/ch15-04-rc.html
+https://doc.rust-lang.org/book/ch15-05-interior-mutability.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
