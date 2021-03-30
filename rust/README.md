@@ -8,6 +8,7 @@ https://doc.rust-lang.org/book/ch15-02-deref.html
 https://doc.rust-lang.org/book/ch15-03-drop.html
 https://doc.rust-lang.org/book/ch15-04-rc.html
 https://doc.rust-lang.org/book/ch15-05-interior-mutability.html
+https://doc.rust-lang.org/book/ch15-06-reference-cycles.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
@@ -54,3 +55,8 @@ memoization(keep in memory) or lazy evaluation: a struct that will hold the clos
 ### documentation commands
 - cargo doc
 - cargo doc --open
+
+
+
+### check out this
+- Halting Problem
