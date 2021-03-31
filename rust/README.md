@@ -9,6 +9,7 @@ https://doc.rust-lang.org/book/ch15-03-drop.html
 https://doc.rust-lang.org/book/ch15-04-rc.html
 https://doc.rust-lang.org/book/ch15-05-interior-mutability.html
 https://doc.rust-lang.org/book/ch15-06-reference-cycles.html
+https://doc.rust-lang.org/book/ch16-00-concurrency.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
@@ -60,3 +61,10 @@ memoization(keep in memory) or lazy evaluation: a struct that will hold the clos
 
 ### check out this
 - Halting Problem
+
+
+## Smart pointer 
+- Box points to data allocated on the heap
+- RC multiple owners and track the number of references
+- RefCell interior mutability for immutables types
+- 
