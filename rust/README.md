@@ -1,6 +1,10 @@
 # Exercises of the rust book
 - [the book](https://doc.rust-lang.org/book/)
 
+
+###
+https://doc.rust-lang.org/nomicon/index.html
+
 ## last readed chapter
 https://doc.rust-lang.org/book/ch15-00-smart-pointers.html
 https://doc.rust-lang.org/book/ch15-01-box.html
@@ -10,6 +14,7 @@ https://doc.rust-lang.org/book/ch15-04-rc.html
 https://doc.rust-lang.org/book/ch15-05-interior-mutability.html
 https://doc.rust-lang.org/book/ch15-06-reference-cycles.html
 https://doc.rust-lang.org/book/ch16-00-concurrency.html
+https://doc.rust-lang.org/book/ch16-03-shared-state.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
