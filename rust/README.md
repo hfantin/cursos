@@ -16,6 +16,7 @@ https://doc.rust-lang.org/book/ch15-06-reference-cycles.html
 https://doc.rust-lang.org/book/ch16-00-concurrency.html
 https://doc.rust-lang.org/book/ch16-03-shared-state.html
 https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html
+https://doc.rust-lang.org/book/ch17-01-what-is-oo.html
 ### exercises
 Convert temperatures between Fahrenheit and Celsius.
 Generate the nth Fibonacci number.
