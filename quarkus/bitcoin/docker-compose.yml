@@ -1,18 +1,18 @@
 version: "3.7"
 services:
-  bitcoin-native:
-    image: quarkus/bitcoin-native:latest
-    build:
-      context: ./
-      dockerfile: src/main/docker/Dockerfile.${QUARKUS_MODE:-native}
-    environment:
-      QUARKUS_DATASOURCE_URL: jdbc:postgresql://db:5432/bitcoin
-    networks:
-      - internal
-    ports:
-      - 5000:5000
-    depends_on:
-      - db
+#  bitcoin-native:
+#    image: quarkus/bitcoin-native:latest
+#    build:
+#      context: ./
+#      dockerfile: src/main/docker/Dockerfile.${QUARKUS_MODE:-native}
+#    environment:
+#      QUARKUS_DATASOURCE_URL: jdbc:postgresql://db:5432/bitcoin
+#    networks:
+#      - internal
+#    ports:
+#      - 5000:5000
+#    depends_on:
+#      - db
 
   db:
     image: postgres:9.5
