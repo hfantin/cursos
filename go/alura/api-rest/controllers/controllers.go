@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/hfantin/api-rest/database"
 	"github.com/hfantin/api-rest/models"
 )
 
@@ -15,17 +15,15 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func TodasPersonalidades(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode(models.Personalidades)
+	var p []models.Personalidade
+	database.DB.Find(&p)
+	json.NewEncoder(w).Encode(p)
 }
 
 func UmaPersonalidade(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
-	for _, p := range models.Personalidades {
-		if strconv.Itoa(p.Id) == id {
-			json.NewEncoder(w).Encode(p)
-			return
-		}
-	}
-	json.NewEncoder(w).Encode(map[string]string{"error": "not found " + id})
+	var p models.Personalidade
+	database.DB.First(&p, id)
+	json.NewEncoder(w).Encode(p)
 }
