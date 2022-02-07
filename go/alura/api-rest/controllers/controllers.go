@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -50,7 +51,7 @@ func ExcluirPersonalidade(w http.ResponseWriter, r *http.Request) {
 	id := vars["id"]
 	var p models.Personalidade
 	result := database.DB.Delete(&p, id)
-	fmt.Println("deu certo: ", result.RowsAffected)
+	log.Println("deu certo: ", result.RowsAffected)
 	if result.RowsAffected == 0 {
 		json.NewEncoder(w).Encode(map[string]string{"error": "personalidade não encontrada"})
 		return
