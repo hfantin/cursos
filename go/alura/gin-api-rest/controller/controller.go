@@ -58,7 +58,6 @@ func AlterarAluno(c *gin.Context) {
 	var aluno models.Aluno
 	id := c.Params.ByName("id")
 	database.DB.First(&aluno, id)
-	fmt.Println("atualizando", aluno)
 	if aluno.ID == 0 {
 		c.JSON(http.StatusNotFound, gin.H{
 			"error": fmt.Sprintf("aluno %s nao encontrado", id),
@@ -71,7 +70,12 @@ func AlterarAluno(c *gin.Context) {
 		})
 		return
 	}
-	fmt.Println("2 atualizando", aluno)
+	if err := aluno.Validar(); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": fmt.Sprintf("nao foi possivel criar o aluno: %s", err.Error()),
+		})
+		return
+	}
 	res := database.DB.Model(&aluno).UpdateColumns(aluno)
 	if res.RowsAffected == 0 {
 		c.JSON(http.StatusNotFound, gin.H{
@@ -79,7 +83,6 @@ func AlterarAluno(c *gin.Context) {
 		})
 		return
 	}
-	fmt.Println("3 atualizando", aluno)
 	c.JSON(http.StatusOK, gin.H{"msg": fmt.Sprintf("aluno %s atualizado com sucesso", id)})
 }
 
@@ -88,6 +91,12 @@ func CriarAluno(c *gin.Context) {
 	if err := c.ShouldBindJSON(&aluno); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": fmt.Sprintf("nao foi possivel criar o aluno %s", err.Error()),
+		})
+		return
+	}
+	if err := aluno.Validar(); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": fmt.Sprintf("nao foi possivel criar o aluno: %s", err.Error()),
 		})
 		return
 	}

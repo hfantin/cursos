@@ -10,9 +10,9 @@ func HandleRequest() {
 	r.GET("/alunos", controller.ListarAlunos)
 	r.GET("/alunos/:id", controller.ObterAluno)
 	r.GET("/alunos/cpf/:cpf", controller.BuscarPorCpf)
-	r.DELETE("/alunos/:id", controller.ApagarAluno)
-	r.PATCH("/alunos/:id", controller.AlterarAluno)
 	r.POST("/alunos", controller.CriarAluno)
+	r.PATCH("/alunos/:id", controller.AlterarAluno)
+	r.DELETE("/alunos/:id", controller.ApagarAluno)
 	r.GET("/saudacao/:nome", controller.Saudacao)
 	r.Run(":5000")
 }
