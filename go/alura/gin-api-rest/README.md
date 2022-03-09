@@ -10,3 +10,8 @@
 ## ip do postgres
 > docker-compose exec postgres sh 
 > hostname -i
+
+
+## links
+- (mock db)[https://dev.to/techschoolguru/mock-db-for-testing-http-api-in-go-and-achieve-100-coverage-4pa9]
+- (sqlmock)[https://betterprogramming.pub/how-to-unit-test-a-gorm-application-with-sqlmock-97ee73e36526]

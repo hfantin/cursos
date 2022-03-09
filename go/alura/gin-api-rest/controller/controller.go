@@ -66,13 +66,13 @@ func AlterarAluno(c *gin.Context) {
 	}
 	if err := c.ShouldBindJSON(&aluno); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": fmt.Sprintf("nao foi possivel criar o aluno %s", err.Error()),
+			"error": fmt.Sprintf("nao foi possivel alterar o aluno %s", err.Error()),
 		})
 		return
 	}
 	if err := aluno.Validar(); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": fmt.Sprintf("nao foi possivel criar o aluno: %s", err.Error()),
+			"error": fmt.Sprintf("nao foi possivel alterar o aluno: %s", err.Error()),
 		})
 		return
 	}
@@ -83,7 +83,9 @@ func AlterarAluno(c *gin.Context) {
 		})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"msg": fmt.Sprintf("aluno %s atualizado com sucesso", id)})
+	// c.JSON(http.StatusOK, gin.H{"msg": fmt.Sprintf("aluno %s atualizado com sucesso", id)})
+	c.JSON(http.StatusOK, aluno)
+
 }
 
 func CriarAluno(c *gin.Context) {
@@ -109,4 +111,16 @@ func Saudacao(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"digo": fmt.Sprintf("e ai %s, beleza", nome),
 	})
+}
+
+func Index(c *gin.Context) {
+	var alunos []models.Aluno
+	database.DB.Find(&alunos)
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"alunos": alunos,
+	})
+}
+
+func NotFound(c *gin.Context) {
+	c.HTML(http.StatusNotFound, "404.html", nil)
 }

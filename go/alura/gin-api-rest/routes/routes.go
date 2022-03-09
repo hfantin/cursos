@@ -7,6 +7,8 @@ import (
 
 func HandleRequest() {
 	r := gin.Default()
+	r.LoadHTMLGlob("templates/*")
+	r.Static("assets", "./assets")
 	r.GET("/alunos", controller.ListarAlunos)
 	r.GET("/alunos/:id", controller.ObterAluno)
 	r.GET("/alunos/cpf/:cpf", controller.BuscarPorCpf)
@@ -14,5 +16,7 @@ func HandleRequest() {
 	r.PATCH("/alunos/:id", controller.AlterarAluno)
 	r.DELETE("/alunos/:id", controller.ApagarAluno)
 	r.GET("/saudacao/:nome", controller.Saudacao)
+	r.GET("/index", controller.Index)
+	r.NoRoute(controller.NotFound)
 	r.Run(":5000")
 }
