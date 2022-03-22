@@ -5,7 +5,8 @@
 - [lists docs](https://hexdocs.pm/elixir/List.html)
 - [keyword lists](https://elixir-lang.org/getting-started/keywords-and-maps.html#keyword-lists)
 - [macros](https://elixir-lang.org/getting-started/meta/macros.html)
-
+- [naming conventions](https://hexdocs.pm/elixir/master/naming-conventions.html)
+- [tail recursion vs body recursion](https://blog.appsignal.com/2019/03/19/elixir-alchemy-recursion.html)
 ## comnados 
 - lista
 > hd head
