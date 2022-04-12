@@ -1,1 +1,1 @@
-Numero aleatorio: 150
+Numero aleatorio: 186

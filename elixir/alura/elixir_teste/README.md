@@ -20,7 +20,8 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/elixir_teste>.
 
 
-
+### libs used: 
+- https://hex.pm/packages/quantum - https://hexdocs.pm/quantum/readme.html
 
 ### commands
 - init iex: 
@@ -35,3 +36,14 @@ be found at <https://hexdocs.pm/elixir_teste>.
 
 - help 
 > mix help <something>
+
+- run 
+> mix run --no-halt
+
+- observer 
+> iex -S mix
+> :observer.start
+
+
+# links 
+- debug: https://elixir-lang.org/getting-started/debugging.html
