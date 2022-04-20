@@ -47,3 +47,5 @@ be found at <https://hexdocs.pm/elixir_teste>.
 
 # links 
 - debug: https://elixir-lang.org/getting-started/debugging.html
+- ets: https://www.erlang.org/doc/man/ets.html
+- tests playlist: https://www.youtube.com/playlist?list=PL3j2sfzg3FPsPiaDUmDDKNvco49YMdj8f
