@@ -26,7 +26,6 @@ defmodule MyList do
   def max([x]), do: x
   def max([head | tail]), do: Kernel.max(head, max(tail))
 
-
   # An Elixir single-quoted string is actually a list of individual character
   # codes. Write a caesar(list, n) function that adds n to each list element,
   # wrapping if the addition results in a character greater than z.
@@ -35,4 +34,9 @@ defmodule MyList do
   def caesar([], _n), do: []
   def caesar([head | tail], n) when head + n <= ?z, do: [head + n | caesar(tail, n)]
   def caesar([head | tail], n), do: [head + n - 26 | caesar(tail, n)]
+
+  # exercise 5
+  # Write a function MyList.span(from, to) that returns a list of the numbers from "from" up to "to".
+  def span(from, to) when from > to, do: []
+  def span(from, to), do: [ from | span(from + 1, to)]
 end
