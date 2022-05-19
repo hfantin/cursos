@@ -72,4 +72,6 @@ defmodule Exercises do
     range = span(from, n)
     range -- (for a <- range, b <- range,a <= b, a * b <= n, do: a * b)
   end
+
+
 end
