@@ -58,4 +58,18 @@ defmodule Exercises do
   def do_flatten([], tail) do
     tail
   end
+
+  # Frorm chapter 7 page 71
+  # Write a function MyList.span(from, to) that returns a list of the numbers from "from" up to "to".
+  def span(from, to) when from > to, do: []
+  def span(from, to), do: [from | span(from + 1, to)]
+
+  # Exercise: ListsAndRecursion-7
+  # In the last exercise of Chapter 7, Lists and Recursion, on page 71, you
+  # wrote a span function. Use it and list comprehensions to return a list of
+  # the prime numbers from 2 to n.
+  def ex7(from \\2, n) do
+    range = span(from, n)
+    range -- (for a <- range, b <- range,a <= b, a * b <= n, do: a * b)
+  end
 end
