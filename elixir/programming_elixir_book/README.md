@@ -5,3 +5,8 @@
 - [forum](https://elixirforum.com/)
 - [expresions in guard clauses](http://elixir-lang.org/getting-started/case-cond-and-if.html#expressions-in-guard-clauses)
 - [type check functions - erlang](http://erlang.org/doc/man/erlang.html#is_atom-1)
+
+
+## commands
+- compile to escript: 
+> mix escript.build

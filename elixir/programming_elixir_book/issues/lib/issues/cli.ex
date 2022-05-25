@@ -8,7 +8,7 @@ defmodule Issues.CLI do
   to various functions that end up generating a
   table of the last _n_ issues in a gitlab project
   """
-  def run(argv) do
+  def main(argv) do
     argv
     |> parse_args
     |> process
