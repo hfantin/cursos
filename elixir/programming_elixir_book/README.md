@@ -22,3 +22,10 @@ Node.spawn(:node_1@localhost, func)
 ```
 - using cookies
 > iex --sname one --cookie cookie-name
+
+
+## fire up server manually 
+> iex -S mix 
+> { :ok, pid } = GenServer.start_link(Sequence.Server, 100)
+> GenServer.call(pid, :next_number)
+> GenServer.call(pid, {:set_number, 999})
