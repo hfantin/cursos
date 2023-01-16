@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(tableName = "aluno")
 public class Aluno implements Serializable {
@@ -14,37 +15,20 @@ public class Aluno implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id = 0;
     private String nome;
-//    private String sobrenome;
-    private String telefone;
     private String email;
 
     private LocalDateTime momentoCadastro = LocalDateTime.now();
 
-    public Aluno() {
-
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public LocalDateTime getMomentoCadastro() {
-        return momentoCadastro;
-    }
-
-    public void setMomentoCadastro(LocalDateTime momentoCadastro) {
-        this.momentoCadastro = momentoCadastro;
-    }
-
-    @Ignore
-    public Aluno(String nome, String telefone, String email) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
+    public int getId() {
+        return id;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public void setEmail(String email) {
@@ -55,46 +39,28 @@ public class Aluno implements Serializable {
         return nome;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
+    @Ignore
+    private List<Telefone> telefones;
 
     public String getEmail() {
         return email;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return nome + " - " + telefone;
+    public LocalDateTime getMomentoCadastro() {
+        return momentoCadastro;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
+    public void setMomentoCadastro(LocalDateTime momentoCadastro) {
+        this.momentoCadastro = momentoCadastro;
     }
 
     public boolean temIdValido() {
         return id > 0;
     }
-//
-//    public String getSobrenome() {
-//        return sobrenome;
-//    }
-//
-//    public void setSobrenome(String sobrenome) {
-//        this.sobrenome = sobrenome;
-//    }
 
-//    public String getNomeCompleto() {
-//        return nome + " " + sobrenome;
-//    }
-
-//    public String dataFormatada() {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        return formatter.format(momentoCadastro);
-//    }
+    @NonNull
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
