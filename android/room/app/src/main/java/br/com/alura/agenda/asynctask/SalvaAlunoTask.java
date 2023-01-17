@@ -1,58 +1,37 @@
 package br.com.alura.agenda.asynctask;
 
-import android.os.AsyncTask;
-
 import br.com.alura.agenda.database.dao.AlunoDao;
 import br.com.alura.agenda.database.dao.TelefoneDao;
 import br.com.alura.agenda.model.Aluno;
 import br.com.alura.agenda.model.Telefone;
 
-public class SalvaAlunoTask extends AsyncTask<Void, Void, Void> {
+public class SalvaAlunoTask extends BaseAlunoComTelefoneTask {
 
-    private final AlunoDao alunoDAO;
+    private final AlunoDao alunoDao;
     private final Aluno aluno;
     private final Telefone telefoneFixo;
     private final Telefone telefoneCelular;
-    private final TelefoneDao telefoneDAO;
-    private final QuandoAlunoSalvoListener listener;
+    private final TelefoneDao telefoneDao;
 
-    public SalvaAlunoTask(AlunoDao alunoDAO,
+    public SalvaAlunoTask(AlunoDao alunoDao,
                           Aluno aluno,
                           Telefone telefoneFixo,
                           Telefone telefoneCelular,
-                          TelefoneDao telefoneDAO, QuandoAlunoSalvoListener listener) {
-        this.alunoDAO = alunoDAO;
+                          TelefoneDao telefoneDao,
+                          FinalizadaListener listener) {
+        super(listener);
+        this.alunoDao = alunoDao;
         this.aluno = aluno;
         this.telefoneFixo = telefoneFixo;
         this.telefoneCelular = telefoneCelular;
-        this.telefoneDAO = telefoneDAO;
-        this.listener = listener;
+        this.telefoneDao = telefoneDao;
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
-        int alunoId = alunoDAO.salva(aluno).intValue();
+        int alunoId = alunoDao.salva(aluno).intValue();
         vinculaAlunoComTelefone(alunoId, telefoneFixo, telefoneCelular);
-        telefoneDAO.salva(telefoneFixo, telefoneCelular);
+        telefoneDao.salva(telefoneFixo, telefoneCelular);
         return null;
     }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-        listener.quandoSalvo();
-    }
-
-    private void vinculaAlunoComTelefone(int alunoId, Telefone... telefones) {
-        for (Telefone telefone :
-                telefones) {
-            telefone.setAlunoId(alunoId);
-        }
-    }
-
-    public interface QuandoAlunoSalvoListener {
-        void quandoSalvo();
-    }
-
-
 }
