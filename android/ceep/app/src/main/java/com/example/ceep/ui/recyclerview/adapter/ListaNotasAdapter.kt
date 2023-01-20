@@ -1,0 +1,34 @@
+package com.example.ceep.ui.recyclerview.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ceep.databinding.ItemNotaBinding
+import com.example.ceep.model.Nota
+
+class ListaNotasAdapter(val notas: ArrayList<Nota>) :  RecyclerView.Adapter<ListaNotasAdapter.ViewHolder>() {
+
+    class ViewHolder(private val view: ItemNotaBinding) : RecyclerView.ViewHolder(view.root) {
+        fun bind(nota: Nota) {
+            view.itemNotaTitulo.text = nota.titulo
+            view.itemNotaDescricao.text = nota.descricao
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemNotaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(notas[position])
+    }
+
+    override fun getItemCount() = notas.size
+
+    fun adiciona(nota: Nota) {
+        notas.add(nota)
+        notifyDataSetChanged()
+    }
+
+}
