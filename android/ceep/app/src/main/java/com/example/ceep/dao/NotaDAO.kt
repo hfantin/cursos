@@ -14,7 +14,7 @@ class NotaDAO {
     }
 
     fun altera(posicao: Int, nota: Nota?) {
-        notas[posicao] = nota
+        if (posicao > -1) notas[posicao] = nota
     }
 
     fun remove(posicao: Int) {

@@ -12,12 +12,24 @@ import com.example.ceep.model.Nota
 class FormularioNotaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFormularioNotaBinding
+    private var notaAlterada: Nota? = null
+    private var posicao: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioNotaBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        obterNotaAlterada()
+    }
+
+    private fun obterNotaAlterada() {
+        if (intent.hasExtra(NOTA_ALTERAR)) {
+            notaAlterada = intent.getParcelableExtra<Nota>(NOTA_ALTERAR)!!
+            posicao = intent.getIntExtra(POSICAO, -1)
+            binding.formularioNotaTitulo.setText(notaAlterada?.titulo)
+            binding.formularioNotaDescricao.setText(notaAlterada?.descricao)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -27,16 +39,17 @@ class FormularioNotaActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (ehMenuSalvaNota(item)) {
-            val notaCriada = criarNota()
-            retornaNota(notaCriada)
+            val acao = notaAlterada?.let { NOTA_ALTERADA } ?: NOTA_INCLUIDA
+            retornaNota(acao, criarNota())
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun retornaNota(notaCriada: Nota) {
+    private fun retornaNota(acao: String, notaCriada: Nota) {
         setResult(RESULT_OK, Intent().apply {
-            putExtra(NOTA, notaCriada)
+            putExtra(acao, notaCriada)
+            putExtra(POSICAO, posicao)
         })
     }
 

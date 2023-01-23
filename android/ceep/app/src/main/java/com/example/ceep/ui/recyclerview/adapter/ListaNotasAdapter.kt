@@ -6,9 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ceep.databinding.ItemNotaBinding
 import com.example.ceep.model.Nota
 
-class ListaNotasAdapter(val notas: ArrayList<Nota>) :  RecyclerView.Adapter<ListaNotasAdapter.ViewHolder>() {
 
-    class ViewHolder(private val view: ItemNotaBinding) : RecyclerView.ViewHolder(view.root) {
+class ListaNotasAdapter(val notas: ArrayList<Nota>, val onItemClick: (Int, Nota) -> Unit) :  RecyclerView.Adapter<ListaNotasAdapter.ViewHolder>() {
+
+    class ViewHolder(private val view: ItemNotaBinding, private val onClick: (Int) -> Unit) : RecyclerView.ViewHolder(view.root) {
+        init {
+            itemView.setOnClickListener {
+                onClick(adapterPosition)
+            }
+        }
         fun bind(nota: Nota) {
             view.itemNotaTitulo.text = nota.titulo
             view.itemNotaDescricao.text = nota.descricao
@@ -17,7 +23,7 @@ class ListaNotasAdapter(val notas: ArrayList<Nota>) :  RecyclerView.Adapter<List
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemNotaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding) { onItemClick(it, notas[it]) }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,6 +34,16 @@ class ListaNotasAdapter(val notas: ArrayList<Nota>) :  RecyclerView.Adapter<List
 
     fun adiciona(nota: Nota) {
         notas.add(nota)
+        notifyDataSetChanged()
+    }
+
+    fun altera(posicao: Int, nota: Nota) {
+        notas[posicao] = nota
+        notifyDataSetChanged()
+    }
+
+    fun remove(posicao: Int) {
+        notas.removeAt(posicao)
         notifyDataSetChanged()
     }
 
