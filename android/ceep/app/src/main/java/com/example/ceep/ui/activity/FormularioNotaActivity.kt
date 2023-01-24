@@ -20,12 +20,14 @@ class FormularioNotaActivity : AppCompatActivity() {
         binding = ActivityFormularioNotaBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        title = getString(R.string.titulo_insere_nota)
         obterNotaAlterada()
     }
 
     private fun obterNotaAlterada() {
         if (intent.hasExtra(NOTA_ALTERAR)) {
-            notaAlterada = intent.getParcelableExtra<Nota>(NOTA_ALTERAR)!!
+            title = getString(R.string.titulo_altera_nota)
+            notaAlterada = intent.getParcelableExtra(NOTA_ALTERAR)!!
             posicao = intent.getIntExtra(POSICAO, -1)
             binding.formularioNotaTitulo.setText(notaAlterada?.titulo)
             binding.formularioNotaDescricao.setText(notaAlterada?.descricao)

@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.example.ceep.R
 import com.example.ceep.dao.NotaDAO
 import com.example.ceep.databinding.ActivityListaNotasBinding
 import com.example.ceep.model.Nota
@@ -47,6 +48,7 @@ class ListaNotasActivity : AppCompatActivity() {
         binding = ActivityListaNotasBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        title = getString(R.string.titulos_notas)
         configuraBotao()
         configuraAdapter()
     }

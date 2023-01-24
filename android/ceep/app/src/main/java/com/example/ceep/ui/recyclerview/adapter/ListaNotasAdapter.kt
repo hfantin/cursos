@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ceep.databinding.ItemNotaBinding
 import com.example.ceep.model.Nota
+import java.util.*
 
 
-class ListaNotasAdapter(val notas: ArrayList<Nota>, val onItemClick: (Int, Nota) -> Unit) :  RecyclerView.Adapter<ListaNotasAdapter.ViewHolder>() {
+class ListaNotasAdapter(private val notas: ArrayList<Nota>, val onItemClick: (Int, Nota) -> Unit) :  RecyclerView.Adapter<ListaNotasAdapter.ViewHolder>() {
 
     class ViewHolder(private val view: ItemNotaBinding, private val onClick: (Int) -> Unit) : RecyclerView.ViewHolder(view.root) {
         init {
@@ -39,12 +40,16 @@ class ListaNotasAdapter(val notas: ArrayList<Nota>, val onItemClick: (Int, Nota)
 
     fun altera(posicao: Int, nota: Nota) {
         notas[posicao] = nota
-        notifyDataSetChanged()
+        notifyItemChanged(posicao)
     }
 
     fun remove(posicao: Int) {
         notas.removeAt(posicao)
-        notifyDataSetChanged()
+        notifyItemRemoved(posicao)
     }
+
+    fun troca(posicaoInicial: Int, posicaoFinal: Int) {
+        Collections.swap(notas, posicaoInicial, posicaoFinal)
+        notifyItemMoved(posicaoInicial, posicaoFinal) }
 
 }

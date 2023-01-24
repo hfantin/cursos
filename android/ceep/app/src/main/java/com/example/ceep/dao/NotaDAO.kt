@@ -2,7 +2,6 @@ package com.example.ceep.dao
 
 import com.example.ceep.model.Nota
 import java.util.*
-import kotlin.collections.ArrayList
 
 class NotaDAO {
     fun todos(): ArrayList<Nota> {
