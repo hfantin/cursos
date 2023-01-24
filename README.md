@@ -7,5 +7,5 @@
 5. [Teste desempenho](teste-desempenho/)
 6. [Threads - parte 1](threads/parte1/)
 7. [Threads - parte 1](threads/parte2/)   
-8. TODO - incluir novos projetos...
+8. TODO - incluir novos projetos....
 cursos
