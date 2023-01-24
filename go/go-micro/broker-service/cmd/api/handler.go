@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -12,6 +13,7 @@ type jsonResponse struct {
 }
 
 func (app *Config) Broker(w http.ResponseWriter, r *http.Request) {
+	log.Println("hit on broker")
 	payload := jsonResponse{
 		Error:   false,
 		Message: "Hit the broker",
