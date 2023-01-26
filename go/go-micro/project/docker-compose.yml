@@ -11,6 +11,8 @@ services:
     deploy: 
       mode: replicated
       replicas: 1
+    networks:
+      - internal
 
   authentication-service:
     build:
@@ -24,11 +26,13 @@ services:
       replicas: 1
     environment:
       DSN: "host=postgres port=5432 user=postgres password=password dbname=users sslmode=disable timezone=UTC connect_timeout=5"
+    networks:
+      - internal
 
 
   postgres:
     image: 'postgres:14.2'
-    user: "501:20"
+    user: "999:999"
     ports:
       - "5432:5432"
     deploy:
@@ -40,3 +44,13 @@ services:
       POSTGRES_DB: users
     volumes:
       - ./db-data/postgres/:/var/lib/postgresql/data
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "111.111.10.0/24"

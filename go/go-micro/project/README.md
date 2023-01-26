@@ -13,3 +13,13 @@ from this [link](https://stackoverflow.com/a/71542236)
 
 ## Change user and group of db-data folder
 >  chown -R $(whoami):staff db-data
+
+
+## perminssion on podman
+https://www.tutorialworks.com/podman-rootless-volumes/
+
+podman unshare chown user:user $PATH
+podman unshare chown postgres:postgres /var/lib/postgresql/data
+
+
+/var/lib/postgresql/data
