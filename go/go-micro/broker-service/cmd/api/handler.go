@@ -49,11 +49,11 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
-	fmt.Println("auth payload:", a)
 	// create some json we'll send to the auth microservice
+	fmt.Println("authenticate", a)
 	jsonData, _ := json.MarshalIndent(a, "", "\t")
 	// call the service
-	request, err := http.NewRequest("POST", "http://localhost:8081/authenticate", bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", "http://authentication-service/authenticate", bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return
