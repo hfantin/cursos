@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -48,10 +49,11 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
+	fmt.Println("auth payload:", a)
 	// create some json we'll send to the auth microservice
 	jsonData, _ := json.MarshalIndent(a, "", "\t")
 	// call the service
-	request, err := http.NewRequest("POST", "http://authentication-service/authenticate", bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", "http://localhost:8081/authenticate", bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return
@@ -68,7 +70,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	if response.StatusCode == http.StatusUnauthorized {
 		app.errorJSON(w, errors.New("invalid credentials"))
 		return
-	} else if response.StatusCode == http.StatusAccepted {
+	} else if response.StatusCode != http.StatusAccepted {
 		app.errorJSON(w, errors.New("error calling auth service"))
 		return
 	}
@@ -85,7 +87,7 @@ func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	}
 
 	if jsonFromService.Error {
-		app.errorJSON(w, err, http.StatusUnauthorized)
+		app.errorJSON(w, errors.New(jsonFromService.Message), http.StatusUnauthorized)
 		return
 	}
 
