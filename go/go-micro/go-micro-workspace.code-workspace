@@ -4,13 +4,18 @@
 			"path": "front-end"
 		},
 		{
+			"path": "authentication-service"
+		},
+		{
 			"path": "broker-service"
+		},
+
+		{
+			"path": "logger-service"
 		},
 		{
 			"path": "project"
-		},
-		{
-			"path": "authentication-service"
 		}
+
 	]
 }
