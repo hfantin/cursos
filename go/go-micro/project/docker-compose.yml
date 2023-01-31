@@ -32,7 +32,7 @@ services:
 
   postgres:
     image: 'postgres:14.2'
-    # user: "999:999"
+    user: "999:999"
     ports:
       - "5432:5432"
     deploy:
@@ -43,7 +43,9 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: users
     volumes:
-      - ./db-data/postgres/:/var/lib/postgresql/data
+      - ./db-data/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # - ./db-data/postgres/:/var/lib/postgresql/data/
+      # - ./db-data:/var/lib/postgresql/data
     networks:
       - internal
 

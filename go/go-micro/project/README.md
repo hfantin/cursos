@@ -24,3 +24,26 @@ podman unshare chown postgres:postgres /var/lib/postgresql/data
 
 
 /var/lib/postgresql/data
+
+- command line 
+> podman run -d \
+    --name postgres \
+    -e POSTGRES_DB=users \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_PASSWORD=password \
+    -v ./db-data/postgres/:/var/lib/postgresql/data \
+    -p 5432:5432 \
+    --privileged \
+    postgres:14.2
+
+> podman run -d \
+    --name postgres \
+    -e POSTGRES_DB=users \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_PASSWORD=password \
+    -v ./db-data/postgres:/home/root \
+    -p 5432:5432 \
+    postgres:14.2
+
+
+> $ podman run --user 200 -it -v $(pwd)/myfolder:/mnt/myfolder:Z busybox    
