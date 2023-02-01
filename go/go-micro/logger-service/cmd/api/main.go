@@ -8,21 +8,20 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const (
-	webPort  = "80"
-	rpcPort  = "5001"
-	mongoURL = "mongodb://mongo:27017"
-	gRpcPort = "50001"
-)
-
 var client *mongo.Client
 
 type Config struct {
 }
 
 func main() {
+	// define environment variables
+	env, err := LoadConfig(".")
+	log.Println("Starting logger service on port", env.ServerPort)
+	if err != nil {
+		log.Panic("cannot load environment variables")
+	}
 	// connect to mongo
-	mongoClient, err := connectToMongo()
+	mongoClient, err := connectToMongo(env)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -30,12 +29,12 @@ func main() {
 
 }
 
-func connectToMongo() (*mongo.Client, error) {
+func connectToMongo(env *Env) (*mongo.Client, error) {
 	// create connection options
-	clientOptions := options.Client().ApplyURI(mongoURL)
+	clientOptions := options.Client().ApplyURI(env.MongoUrl)
 	clientOptions.SetAuth(options.Credential{
-		Username: "admin",
-		Password: "password",
+		Username: env.MongoUser,
+		Password: env.MongoPassword,
 	})
 
 	// connect

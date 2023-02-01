@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/hfantin/authentication/data"
@@ -15,8 +14,6 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-const webPort = "80"
-
 var counts int64
 
 type Config struct {
@@ -25,9 +22,14 @@ type Config struct {
 }
 
 func main() {
-	log.Println("Starting authentication service on port", webPort)
+	env, err := LoadConfig(".")
+	if err != nil {
+		log.Panic("cannot load environment variables")
+	}
+
+	log.Println("Starting authentication service on port", env.ServerPort)
 	// connect to DB
-	conn := connectToDB()
+	conn := connectToDB(env.DSN)
 	if conn == nil {
 		log.Panic("Can't connect to Postgres!")
 	}
@@ -39,11 +41,11 @@ func main() {
 	}
 
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%s", webPort),
+		Addr:    fmt.Sprintf(":%s", env.ServerPort),
 		Handler: app.Routes(),
 	}
 
-	err := srv.ListenAndServe()
+	err = srv.ListenAndServe()
 
 	if err != nil {
 		log.Panic("could not start server:", err)
@@ -64,13 +66,11 @@ func openDB(dsn string) (*sql.DB, error) {
 	return db, nil
 }
 
-func connectToDB() *sql.DB {
-	dsn := os.Getenv("DSN")
-
+func connectToDB(dsn string) *sql.DB {
 	for {
 		connection, err := openDB(dsn)
 		if err != nil {
-			log.Println("Postgres not yet ready ...")
+			log.Println("Postgres not yet ready ...", err)
 			counts++
 		} else {
 			log.Println("Connected to Postgres!")
