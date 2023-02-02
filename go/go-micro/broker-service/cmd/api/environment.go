@@ -12,7 +12,7 @@ type Env struct {
 
 func LoadConfig(path string) (*Env, error) {
 	viper.AddConfigPath(path)
-	viper.SetConfigName("app")
+	viper.SetConfigName(".env")
 	viper.SetConfigType("env")
 
 	viper.AutomaticEnv()
@@ -20,7 +20,7 @@ func LoadConfig(path string) (*Env, error) {
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Println("file doesnot exist")
-		// return nil, err
+		return nil, err
 	}
 
 	var env Env
