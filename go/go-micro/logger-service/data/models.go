@@ -25,7 +25,7 @@ type LogEntry struct {
 }
 
 func New(mongo *mongo.Client) Models {
-	client := mongo
+	// client := mongo
 
 	return Models{
 		LogEntry: LogEntry{},

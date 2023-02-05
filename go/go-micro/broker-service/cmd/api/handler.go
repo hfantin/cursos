@@ -12,11 +12,17 @@ import (
 type RequestPayload struct {
 	Action string      `json:"action"`
 	Auth   AuthPayload `json:"auth,omitempty"`
+	Log    LogPayload  `json:"log,omitempty"`
 }
 
 type AuthPayload struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
+}
+
+type LogPayload struct {
+	Name string `json:"name"`
+	Data string `json:"data"`
 }
 
 func (app *Config) Broker(w http.ResponseWriter, r *http.Request) {
@@ -42,18 +48,49 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 	switch requestPayload.Action {
 	case "auth":
 		app.authenticate(w, requestPayload.Auth)
+	case "log":
+		app.logItem(w, requestPayload.Log)
 	default:
 		app.errorJSON(w, errors.New("unknown action"))
 	}
 
 }
 
+func (app *Config) logiItem(w http.ResponseWriter, entry LogPayload) {
+	jsonData, _ := json.MarshalIndent(entry, "", "\t")
+	fmt.Println("logging", entry, "on", app.Env.LoggerServiceUrl)
+	request, err := http.NewRequest("POST", app.Env.LoggerServiceUrl, bytes.NewBuffer(jsonData))
+	if err != nil {
+		app.errorJSON(w, err)
+		return
+	}
+
+	request.Header.Set("Contenty-Type", "application/json")
+	client := &http.Client{}
+	response, err := client.Do(request)
+	if err != nil {
+		app.errorJSON(w, err)
+		return
+	}
+	defer response.Body.Close()
+	if response.StatusCode != http.StatusAccepted {
+		app.errorJSON(w, errors.New("log failed"))
+		return
+	}
+	var payload jsonResponse
+	payload.Error = false
+	payload.Message = "logged"
+
+	app.writeJSON(w, http.StatusAccepted, payload)
+
+}
+
 func (app *Config) authenticate(w http.ResponseWriter, a AuthPayload) {
 	// create some json we'll send to the auth microservice
-	fmt.Println("authenticate", a)
+	fmt.Println("authenticate", a, "on", app.Env.AuthServiceUrl)
 	jsonData, _ := json.MarshalIndent(a, "", "\t")
 	// call the service
-	request, err := http.NewRequest("POST", "http://authentication-service/authenticate", bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", app.Env.AuthServiceUrl, bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return

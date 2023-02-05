@@ -6,7 +6,9 @@ import (
 	"net/http"
 )
 
-type Config struct{}
+type Config struct {
+	Env *Env
+}
 
 func main() {
 	env, err := LoadConfig(".")
@@ -14,7 +16,7 @@ func main() {
 		log.Panic("cannot load environment variables")
 	}
 
-	app := Config{}
+	app := Config{Env: env}
 
 	log.Printf("Starting broker service on port %s\n", env.ServerPort)
 

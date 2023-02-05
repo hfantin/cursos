@@ -2,9 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"net/http"
 	"time"
 
+	"github.com/hfantin/logger/data"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -12,6 +15,7 @@ import (
 var client *mongo.Client
 
 type Config struct {
+	Models data.Models
 }
 
 func main() {
@@ -41,7 +45,34 @@ func main() {
 		}
 	}()
 
+	app := Config{
+		Models: data.New(client),
+	}
+	// start web server
+	// go app.serve(env)
+	srv := &http.Server{
+		Addr:    fmt.Sprintf(":%s", env.ServerPort),
+		Handler: app.Routes(),
+	}
+
+	err = srv.ListenAndServe()
+	if err != nil {
+		log.Panic()
+	}
+
 }
+
+// func (app *Config) serve(env *Env) {
+// 	srv := &http.Server{
+// 		Addr:    fmt.Sprintf(":%s", env.ServerPort),
+// 		Handler: app.Routes(),
+// 	}
+
+// 	err := srv.ListenAndServe()
+// 	if err != nil {
+// 		log.Panic()
+// 	}
+// }
 
 func connectToMongo(env *Env) (*mongo.Client, error) {
 	// create connection options

@@ -7,7 +7,9 @@ import (
 )
 
 type Env struct {
-	ServerPort string `mapstructure:"SERVER_PORT"`
+	ServerPort       string `mapstructure:"SERVER_PORT"`
+	AuthServiceUrl   string `mapstructure:"AUTH_SERVICE_URL"`
+	LoggerServiceUrl string `mapstructure:"LOGGER_SERVICE_URL"`
 }
 
 func LoadConfig(path string) (*Env, error) {

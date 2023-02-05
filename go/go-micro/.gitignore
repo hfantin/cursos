@@ -1,3 +1,5 @@
 authentication-service/authApp
 broker-service/brokerApp
 front-end/frontApp
+logger-service/loggerApp
+db-data/mongo/*
