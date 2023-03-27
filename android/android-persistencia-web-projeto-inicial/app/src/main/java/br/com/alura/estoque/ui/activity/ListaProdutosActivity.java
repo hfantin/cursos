@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 import br.com.alura.estoque.R;
 import br.com.alura.estoque.asynctask.BaseAsyncTask;
 import br.com.alura.estoque.database.EstoqueDatabase;
@@ -38,7 +40,20 @@ public class ListaProdutosActivity extends AppCompatActivity {
         dao = db.getProdutoDAO();
 
         repository = new ProdutoRepository(dao);
-        repository.buscaProdutos(adapter::atualiza);
+//        repository.buscaProdutos(adapter::atualiza);
+        repository.buscaProdutos(new ProdutoRepository.DadosCarregadosCallback<List<Produto>>() {
+            @Override
+            public void quandoSucesso(List<Produto> produtosNovos) {
+                adapter.atualiza(produtosNovos);
+            }
+
+            @Override
+            public void quandoFalha(String erro) {
+                Toast.makeText(ListaProdutosActivity.this,
+                        "Não foi possível carregar os produtos novos",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -46,16 +61,23 @@ public class ListaProdutosActivity extends AppCompatActivity {
         RecyclerView listaProdutos = findViewById(R.id.activity_lista_produtos_lista);
         adapter = new ListaProdutosAdapter(this, this::abreFormularioEditaProduto);
         listaProdutos.setAdapter(adapter);
-        adapter.setOnItemClickRemoveContextMenuListener(this::remove);
-    }
+        adapter.setOnItemClickRemoveContextMenuListener(
+                (posicao, produtoEscolhido) -> {
+                    repository.remove(produtoEscolhido,
+                            new ProdutoRepository.DadosCarregadosCallback<Void>() {
+                                @Override
+                                public void quandoSucesso(Void resultado) {
+                                    adapter.remove(posicao);
+                                }
 
-    private void remove(int posicao,
-                        Produto produtoRemovido) {
-        new BaseAsyncTask<>(() -> {
-            dao.remove(produtoRemovido);
-            return null;
-        }, resultado -> adapter.remove(posicao))
-                .execute();
+                                @Override
+                                public void quandoFalha(String erro) {
+                                    Toast.makeText(ListaProdutosActivity.this,
+                                            "Não foi possível remover o produto",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                });
     }
 
     private void configuraFabSalvaProduto() {
@@ -64,9 +86,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
     }
 
     private void abreFormularioSalvaProduto() {
-//        new SalvaProdutoDialog(this, this::salva).mostra();
         new SalvaProdutoDialog(this, produtoCriado ->
-//                repository.salva(produtoCriado, adapter::adiciona))
                 repository.salva(produtoCriado, new ProdutoRepository.DadosCarregadosCallback<Produto>() {
                     @Override
                     public void quandoSucesso(Produto produtoSalvo) {
@@ -83,29 +103,35 @@ public class ListaProdutosActivity extends AppCompatActivity {
                 .mostra();
     }
 
-//    private void salva(Produto produto) {
-//        new BaseAsyncTask<>(() -> {
-//            long id = dao.salva(produto);
-//            return dao.buscaProduto(id);
-//        }, produtoSalvo ->
-//                adapter.adiciona(produtoSalvo))
-//                .execute();
-//    }
-
     private void abreFormularioEditaProduto(int posicao, Produto produto) {
         new EditaProdutoDialog(this, produto,
-                produtoEditado -> edita(posicao, produtoEditado))
+                produtoCriado -> repository.edita(produtoCriado,
+                        new ProdutoRepository.DadosCarregadosCallback<Produto>() {
+                            //                            @Override
+//                            public void quandoSucesso(Produto produtoEditado) {
+//                                adapter.edita(posicao, produtoEditado);
+//                            }
+//
+//                            @Override
+//                            public void quandoFalha(String erro) {
+//                                Toast.makeText(ListaProdutosActivity.this,
+//                                        "Não foi possível editar o produto",
+//                                        Toast.LENGTH_SHORT).show();
+//                            }
+//                        }))
+                            @Override
+                            public void quandoSucesso(Produto produtoEditado) {
+                                adapter.edita(posicao, produtoEditado);
+                            }
+
+                            @Override
+                            public void quandoFalha(String erro) {
+                                Toast.makeText(ListaProdutosActivity.this,
+                                        "Não foi possível editar o produto",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }))
                 .mostra();
     }
-
-    private void edita(int posicao, Produto produto) {
-        new BaseAsyncTask<>(() -> {
-            dao.atualiza(produto);
-            return produto;
-        }, produtoEditado ->
-                adapter.edita(posicao, produtoEditado))
-                .execute();
-    }
-
 
 }
