@@ -3,19 +3,13 @@ package br.com.alura.technews.ui.activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import br.com.alura.technews.R
-import br.com.alura.technews.database.AppDatabase
 import br.com.alura.technews.databinding.ActivityFormularioNoticiaBinding
 import br.com.alura.technews.model.Noticia
-import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.ui.activity.extensions.mostraErro
 import br.com.alura.technews.ui.viewmodel.FormularioNoticiaViewModel
-import br.com.alura.technews.ui.viewmodel.FormularioNoticiaViewModelFactory
-import br.com.alura.technews.ui.viewmodel.ListaNoticiasViewModel
-import br.com.alura.technews.ui.viewmodel.ListaNoticiasViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val TITULO_APPBAR_EDICAO = "Editando notícia"
 private const val TITULO_APPBAR_CRIACAO = "Criando notícia"
@@ -28,10 +22,12 @@ class FormularioNoticiaActivity : AppCompatActivity() {
     private val noticiaId: Long by lazy {
         intent.getLongExtra(NOTICIA_ID_CHAVE, 0)
     }
+//    Código não é mais necessário, estamos usando o koin para fazer injeção de dependência
+//    private val viewModel: FormularioNoticiaViewModel by viewModels(factoryProducer = {
+//        FormularioNoticiaViewModelFactory(NoticiaRepository(AppDatabase.getInstance(this).noticiaDAO))
+//    })
 
-    private val viewModel: FormularioNoticiaViewModel by viewModels(factoryProducer = {
-        FormularioNoticiaViewModelFactory(NoticiaRepository(AppDatabase.getInstance(this).noticiaDAO))
-    })
+    private val viewModel by viewModel<FormularioNoticiaViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

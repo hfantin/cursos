@@ -6,16 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.technews.R
-import br.com.alura.technews.database.AppDatabase
 import br.com.alura.technews.databinding.ActivityVisualizaNoticiaBinding
 import br.com.alura.technews.model.Noticia
-import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.ui.activity.extensions.mostraErro
 import br.com.alura.technews.ui.viewmodel.VisualizaNoticiaViewModel
-import br.com.alura.technews.ui.viewmodel.VisualizaNoticiaViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 private const val NOTICIA_NAO_ENCONTRADA = "Notícia não encontrada"
 private const val TITULO_APPBAR = "Notícia"
@@ -28,9 +26,12 @@ class VisualizaNoticiaActivity : AppCompatActivity() {
     private val noticiaId: Long by lazy {
         intent.getLongExtra(NOTICIA_ID_CHAVE, 0)
     }
-    private val viewModel: VisualizaNoticiaViewModel by viewModels(factoryProducer = {
-        VisualizaNoticiaViewModelFactory(noticiaId, NoticiaRepository(AppDatabase.getInstance(this).noticiaDAO))
-    })
+//    Código não é mais necessário, estamos usando o koin para fazer injeção de dependência
+//    private val viewModel: VisualizaNoticiaViewModel by viewModels(factoryProducer = {
+//        VisualizaNoticiaViewModelFactory(noticiaId, NoticiaRepository(AppDatabase.getInstance(this).noticiaDAO))
+//    })
+
+    private val viewModel by viewModel<VisualizaNoticiaViewModel> { parametersOf(noticiaId)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

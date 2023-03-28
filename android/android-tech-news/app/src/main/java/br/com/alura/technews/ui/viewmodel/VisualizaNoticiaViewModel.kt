@@ -3,7 +3,6 @@ package br.com.alura.technews.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.repository.Resource
 
@@ -28,6 +27,7 @@ class VisualizaNoticiaViewModel(
 
 }
 
+/* Código não é mais necessário, estamos usando o koin para fazer injeção de dependência
 class VisualizaNoticiaViewModelFactory(
     private val id: Long,
     private val repository: NoticiaRepository
@@ -39,4 +39,4 @@ class VisualizaNoticiaViewModelFactory(
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-}
+}*/

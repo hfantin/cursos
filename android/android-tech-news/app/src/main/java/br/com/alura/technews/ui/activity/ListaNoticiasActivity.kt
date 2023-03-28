@@ -2,18 +2,15 @@ package br.com.alura.technews.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import br.com.alura.technews.database.AppDatabase
 import br.com.alura.technews.databinding.ActivityListaNoticiasBinding
 import br.com.alura.technews.model.Noticia
-import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.ui.activity.extensions.mostraErro
 import br.com.alura.technews.ui.recyclerview.adapter.ListaNoticiasAdapter
 import br.com.alura.technews.ui.viewmodel.ListaNoticiasViewModel
-import br.com.alura.technews.ui.viewmodel.ListaNoticiasViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val TITULO_APPBAR = "Notícias"
 private const val MENSAGEM_FALHA_CARREGAR_NOTICIAS = "Não foi possível carregar as novas notícias"
@@ -22,9 +19,12 @@ class ListaNoticiasActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaNoticiasBinding
 
-    private val viewModel: ListaNoticiasViewModel by viewModels(factoryProducer = {
-        ListaNoticiasViewModelFactory(NoticiaRepository(AppDatabase.getInstance(applicationContext).noticiaDAO))
-    })
+//    Código não é mais necessário, estamos usando o koin para fazer injeção de dependência
+//    private val viewModel: ListaNoticiasViewModel by viewModels(factoryProducer = {
+//        ListaNoticiasViewModelFactory(NoticiaRepository(AppDatabase.getInstance(applicationContext).noticiaDAO))
+//    })
+
+    private val viewModel by viewModel<ListaNoticiasViewModel>()
 
     private val adapter by lazy {
         ListaNoticiasAdapter(context = this)

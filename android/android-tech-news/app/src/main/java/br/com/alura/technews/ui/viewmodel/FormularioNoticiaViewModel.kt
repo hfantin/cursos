@@ -2,7 +2,6 @@ package br.com.alura.technews.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import br.com.alura.technews.model.Noticia
 import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.repository.Resource
@@ -23,6 +22,7 @@ class FormularioNoticiaViewModel(private val repository: NoticiaRepository) : Vi
     fun buscaPorId(id: Long) = repository.buscaPorId(id)
 }
 
+/* Código não é mais necessário, estamos usando o koin para fazer injeção de dependência
 class FormularioNoticiaViewModelFactory(private val repository: NoticiaRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -33,3 +33,4 @@ class FormularioNoticiaViewModelFactory(private val repository: NoticiaRepositor
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+*/
