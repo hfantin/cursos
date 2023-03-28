@@ -2,6 +2,7 @@ package br.com.alura.technews.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
@@ -11,6 +12,8 @@ import br.com.alura.technews.model.Noticia
 import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.ui.activity.extensions.mostraErro
 import br.com.alura.technews.ui.recyclerview.adapter.ListaNoticiasAdapter
+import br.com.alura.technews.ui.viewmodel.ListaNoticiasViewModel
+import br.com.alura.technews.ui.viewmodel.ListaNoticiasViewModelFactory
 
 private const val TITULO_APPBAR = "Notícias"
 private const val MENSAGEM_FALHA_CARREGAR_NOTICIAS = "Não foi possível carregar as novas notícias"
@@ -19,9 +22,10 @@ class ListaNoticiasActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaNoticiasBinding
 
-    private val repository by lazy {
-        NoticiaRepository(AppDatabase.getInstance(this).noticiaDAO)
-    }
+    private val viewModel: ListaNoticiasViewModel by viewModels(factoryProducer = {
+        ListaNoticiasViewModelFactory(NoticiaRepository(AppDatabase.getInstance(applicationContext).noticiaDAO))
+    })
+
     private val adapter by lazy {
         ListaNoticiasAdapter(context = this)
     }
@@ -34,11 +38,12 @@ class ListaNoticiasActivity : AppCompatActivity() {
         title = TITULO_APPBAR
         configuraRecyclerView()
         configuraFabAdicionaNoticia()
+        buscaNoticias()
     }
 
     override fun onResume() {
         super.onResume()
-        buscaNoticias()
+//        buscaNoticias()
     }
 
     private fun configuraFabAdicionaNoticia() {
@@ -59,13 +64,12 @@ class ListaNoticiasActivity : AppCompatActivity() {
     }
 
     private fun buscaNoticias() {
-        repository.buscaTodos(
-            quandoSucesso = {
-                adapter.atualiza(it)
-            }, quandoFalha = {
+        viewModel.buscaTodos().observe(this) { resource ->
+            resource.dado?.let { adapter.atualiza(it) }
+            resource.erro?.let {
                 mostraErro(MENSAGEM_FALHA_CARREGAR_NOTICIAS)
             }
-        )
+        }
     }
 
     private fun abreFormularioModoCriacao() {
@@ -80,3 +84,4 @@ class ListaNoticiasActivity : AppCompatActivity() {
     }
 
 }
+
