@@ -36,33 +36,43 @@ class NoticiasActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 //        title = TITULO_APPBAR
+        configuraFragmentPeloEstado(savedInstanceState)
+    }
+
+    private fun configuraFragmentPeloEstado(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
                 replace<ListaNoticiasFragment>(R.id.activity_noticias_container_primario)
             }
         } else {
-            supportFragmentManager
-                .findFragmentByTag(TAG_FRAGMENT_VISUALIZA_NOTICIA)?.let { fragment ->
-
-
-                    transacaoFragment {
-                        remove(fragment)
-                    }
-                    supportFragmentManager.popBackStack()
-
-                    val novoFragment = VisualizaNoticiaFragment().apply { arguments = fragment.arguments }
-
-                    supportFragmentManager.commit {
-                        setReorderingAllowed(true)
-                        replace(getContainer(), novoFragment, TAG_FRAGMENT_VISUALIZA_NOTICIA)
-                    }
-                }
+            tentaReabrirFragmentVisualizaNoticia()
         }
     }
 
+    private fun tentaReabrirFragmentVisualizaNoticia() {
+        supportFragmentManager
+            .findFragmentByTag(TAG_FRAGMENT_VISUALIZA_NOTICIA)?.let { fragment ->
+                removeFragmentVisualizaNoticia(fragment)
+                val novoFragment =
+                    VisualizaNoticiaFragment().apply { arguments = fragment.arguments }
+                supportFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    replace(getContainer(), novoFragment, TAG_FRAGMENT_VISUALIZA_NOTICIA)
+                }
+            }
+    }
+
+    private fun removeFragmentVisualizaNoticia(fragment: Fragment) {
+        transacaoFragment {
+            remove(fragment)
+        }
+        supportFragmentManager.popBackStack()
+    }
+
     private fun FragmentTransaction.getContainer() =
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (binding.activityNoticiasContainerSecundario != null) {
             R.id.activity_noticias_container_secundario
         } else {
             addToBackStack(null)
@@ -83,7 +93,13 @@ class NoticiasActivity : AppCompatActivity() {
     }
 
     private fun configuraVisualizaNoticia(fragment: VisualizaNoticiaFragment) {
-        fragment.quandoFinalizaTela = this::finish
+//        fragment.quandoFinalizaTela = this::finish
+        fragment.quandoFinalizaTela = {
+            supportFragmentManager
+                .findFragmentByTag(TAG_FRAGMENT_VISUALIZA_NOTICIA)?.let { fragment ->
+                    removeFragmentVisualizaNoticia(fragment)
+                }
+        }
         fragment.quandoSelecionaMenuEdicao = this::abreFormularioEdicao
     }
 
