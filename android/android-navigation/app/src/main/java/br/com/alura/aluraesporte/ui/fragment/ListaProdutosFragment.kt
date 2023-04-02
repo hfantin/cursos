@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.alura.aluraesporte.databinding.ListaProdutosBinding
-import br.com.alura.aluraesporte.model.Produto
 import br.com.alura.aluraesporte.ui.recyclerview.adapter.ProdutosAdapter
 import br.com.alura.aluraesporte.ui.viewmodel.ProdutosViewModel
 import org.koin.android.ext.android.inject
@@ -19,8 +18,8 @@ class ListaProdutosFragment : Fragment() {
 
     private val viewModel: ProdutosViewModel by viewModel()
     private val adapter: ProdutosAdapter by inject()
+    private val controlador by lazy { findNavController() }
     private lateinit var binding: ListaProdutosBinding
-    var quandoProdutoSelecionado: (produto: Produto) -> Unit = {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +27,11 @@ class ListaProdutosFragment : Fragment() {
     }
 
     private fun buscaProdutos() {
-        viewModel.buscaTodos().observe(this, Observer { produtosEncontrados ->
+        viewModel.buscaTodos().observe(this) { produtosEncontrados ->
             produtosEncontrados?.let {
                 adapter.atualiza(it)
             }
-        })
+        }
     }
 
     override fun onCreateView(
@@ -51,7 +50,15 @@ class ListaProdutosFragment : Fragment() {
     private fun configuraRecyclerView() {
         val divisor = DividerItemDecoration(context, VERTICAL)
         binding.listaProdutosRecyclerview.addItemDecoration(divisor)
-        adapter.onItemClickListener = quandoProdutoSelecionado
+        adapter.onItemClickListener = { produto ->
+            val direction =
+                ListaProdutosFragmentDirections.actionListaProdutosToDetalhesProduto(produto.id)
+            controlador.navigate(direction)
+//            controlador.navigate(
+//                R.id.action_listaProdutos_to_detalhesProduto,
+//                bundleOf(CHAVE_PRODUTO_ID to produto.id)
+//            )
+        }
         binding.listaProdutosRecyclerview.adapter = adapter
     }
 

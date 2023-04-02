@@ -6,27 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.alura.aluraesporte.databinding.PagamentoBinding
 import br.com.alura.aluraesporte.extensions.formatParaMoedaBrasileira
 import br.com.alura.aluraesporte.model.Pagamento
 import br.com.alura.aluraesporte.model.Produto
-import br.com.alura.aluraesporte.ui.activity.CHAVE_PRODUTO_ID
 import br.com.alura.aluraesporte.ui.viewmodel.PagamentoViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val FALHA_AO_CRIAR_PAGAMENTO = "Falha ao criar pagamento"
-
+private const val COMPRA_REALIZADA = "Compra realizada"
 class PagamentoFragment : Fragment() {
 
-    private val produtoId by lazy {
-        arguments?.getLong(CHAVE_PRODUTO_ID)
-            ?: throw IllegalArgumentException(ID_PRODUTO_INVALIDO)
-    }
+
+    private val argumentos by navArgs<PagamentoFragmentArgs>()
+    private val produtoId by lazy { argumentos.produtoId }
+//    private val produtoId by lazy {
+//        arguments?.getLong(CHAVE_PRODUTO_ID)
+//            ?: throw IllegalArgumentException(ID_PRODUTO_INVALIDO)
+//    }
     private val viewModel: PagamentoViewModel by viewModel()
     private lateinit var produtoEscolhido: Produto
     private lateinit var binding: PagamentoBinding
-    var quandoPagamentoRealizado: (idPagamento: Long) -> Unit = {}
+    private val controlador by lazy { findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,13 +47,13 @@ class PagamentoFragment : Fragment() {
     }
 
     private fun buscaProduto() {
-        viewModel.buscaProdutoPorId(produtoId).observe(this, Observer {
+        viewModel.buscaProdutoPorId(produtoId).observe(this) {
             it?.let { produtoEncontrado ->
                 produtoEscolhido = produtoEncontrado
                 binding.pagamentoPreco.text = produtoEncontrado.preco
                     .formatParaMoedaBrasileira()
             }
-        })
+        }
     }
 
     private fun configuraBotaoConfirmaPagamento() {
@@ -66,9 +69,19 @@ class PagamentoFragment : Fragment() {
     private fun salva(pagamento: Pagamento) {
         if (::produtoEscolhido.isInitialized) {
             viewModel.salva(pagamento)
-                .observe(this, Observer {
-                    it?.dado?.let(quandoPagamentoRealizado)
-                })
+                .observe(this) {
+                    it?.dado?.let {
+                        Toast.makeText(
+                            context,
+                            COMPRA_REALIZADA,
+                            Toast.LENGTH_SHORT
+                        ).show()
+//                        controlador.popBackStack(R.id.listaProdutos, false)
+//                        controlador.navigate(R.id.action_pagamento_to_listaProdutos)
+                        val direction = PagamentoFragmentDirections.actionPagamentoToListaProdutos()
+                        controlador.navigate(direction)
+                    }
+                }
         }
     }
 
