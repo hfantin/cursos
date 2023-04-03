@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import br.com.alura.aluraesporte.R
+import br.com.alura.aluraesporte.databinding.ListaProdutosBinding
 import br.com.alura.aluraesporte.ui.recyclerview.adapter.ProdutosAdapter
 import br.com.alura.aluraesporte.ui.viewmodel.ProdutosViewModel
-import kotlinx.android.synthetic.main.lista_produtos.*
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListaProdutosFragment : Fragment() {
 
@@ -23,6 +22,8 @@ class ListaProdutosFragment : Fragment() {
     private val controlador by lazy {
         findNavController()
     }
+
+    private lateinit var binding: ListaProdutosBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +42,8 @@ class ListaProdutosFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(
-            R.layout.lista_produtos,
-            container,
-            false
-        )
+        binding = ListaProdutosBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,11 +53,11 @@ class ListaProdutosFragment : Fragment() {
 
     private fun configuraRecyclerView() {
         val divisor = DividerItemDecoration(context, VERTICAL)
-        lista_produtos_recyclerview.addItemDecoration(divisor)
+        binding.listaProdutosRecyclerview.addItemDecoration(divisor)
         adapter.onItemClickListener = { produtoSelecionado ->
             vaiParaDetalhesDoProduto(produtoSelecionado.id)
         }
-        lista_produtos_recyclerview.adapter = adapter
+        binding.listaProdutosRecyclerview.adapter = adapter
     }
 
     private fun vaiParaDetalhesDoProduto(produtoId: Long) {
