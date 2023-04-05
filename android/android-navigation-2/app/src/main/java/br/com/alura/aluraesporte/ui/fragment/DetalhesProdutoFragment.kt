@@ -3,7 +3,6 @@ package br.com.alura.aluraesporte.ui.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.alura.aluraesporte.R
@@ -46,11 +45,11 @@ class DetalhesProdutoFragment : Fragment() {
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu_lista_produtos, menu)
+        inflater.inflate(R.menu.menu_lista_produtos, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item?.itemId == R.id.menu_lista_produtos_deslogar){
+        if(item.itemId == R.id.menu_lista_produtos_deslogar){
             loginViewModel.desloga()
             vaiParaLogin()
         }
@@ -78,12 +77,12 @@ class DetalhesProdutoFragment : Fragment() {
     }
 
     private fun buscaProduto() {
-        viewModel.produtoEncontrado.observe(this, Observer {
+        viewModel.produtoEncontrado.observe(this) {
             it?.let { produto ->
                 binding.detalhesProdutoNome.text = produto.nome
                 binding.detalhesProdutoPreco.text = produto.preco.formatParaMoedaBrasileira()
             }
-        })
+        }
     }
 
 }

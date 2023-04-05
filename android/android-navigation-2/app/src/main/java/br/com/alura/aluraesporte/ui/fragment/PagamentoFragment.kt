@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.alura.aluraesporte.databinding.PagamentoBinding
@@ -47,13 +46,13 @@ class PagamentoFragment : Fragment() {
     }
 
     private fun buscaProduto() {
-        viewModel.buscaProdutoPorId(produtoId).observe(this, Observer {
+        viewModel.buscaProdutoPorId(produtoId).observe(this) {
             it?.let { produtoEncontrado ->
                 produtoEscolhido = produtoEncontrado
                 binding.pagamentoPreco.text = produtoEncontrado.preco
                     .formatParaMoedaBrasileira()
             }
-        })
+        }
     }
 
     private fun configuraBotaoConfirmaPagamento() {
@@ -69,7 +68,7 @@ class PagamentoFragment : Fragment() {
     private fun salva(pagamento: Pagamento) {
         if (::produtoEscolhido.isInitialized) {
             viewModel.salva(pagamento)
-                .observe(this, Observer {
+                .observe(this) {
                     it?.dado?.let {
                         Toast.makeText(
                             context,
@@ -78,7 +77,7 @@ class PagamentoFragment : Fragment() {
                         ).show()
                         vaiParaListaProdutos()
                     }
-                })
+                }
         }
     }
 

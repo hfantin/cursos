@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout.VERTICAL
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.alura.aluraesporte.R
@@ -58,11 +57,11 @@ class ListaProdutosFragment : Fragment() {
     }
 
     private fun buscaProdutos() {
-        viewModel.buscaTodos().observe(this, Observer { produtosEncontrados ->
+        viewModel.buscaTodos().observe(this) { produtosEncontrados ->
             produtosEncontrados?.let {
                 adapter.atualiza(it)
             }
-        })
+        }
     }
 
     override fun onCreateView(
