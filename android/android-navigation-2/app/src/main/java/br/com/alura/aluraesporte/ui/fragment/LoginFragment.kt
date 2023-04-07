@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.alura.aluraesporte.databinding.LoginBinding
+import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment: Fragment() {
 
+    private val estadoAppViewModel: EstadoAppViewModel by activityViewModel()
     private val controlador by lazy {
         findNavController()
     }
@@ -31,6 +34,7 @@ class LoginFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        estadoAppViewModel.temAppBar = false
         binding.loginBotaoLogar.setOnClickListener {
             viewModel.loga()
             vaiParaListaProdutos()

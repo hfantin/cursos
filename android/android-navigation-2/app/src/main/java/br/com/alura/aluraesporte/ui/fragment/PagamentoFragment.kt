@@ -11,7 +11,9 @@ import br.com.alura.aluraesporte.databinding.PagamentoBinding
 import br.com.alura.aluraesporte.extensions.formatParaMoedaBrasileira
 import br.com.alura.aluraesporte.model.Pagamento
 import br.com.alura.aluraesporte.model.Produto
+import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.PagamentoViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val FALHA_AO_CRIAR_PAGAMENTO = "Falha ao criar pagamento"
@@ -19,6 +21,7 @@ private const val COMPRA_REALIZADA = "Compra realizada"
 
 class PagamentoFragment : BaseFragment() {
 
+    private val estadoAppViewModel: EstadoAppViewModel by activityViewModel()
     private val argumentos by navArgs<PagamentoFragmentArgs>()
     private val produtoId by lazy {
         argumentos.produtoId
@@ -40,6 +43,7 @@ class PagamentoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        estadoAppViewModel.temAppBar = true
         configuraBotaoConfirmaPagamento()
         buscaProduto()
     }
