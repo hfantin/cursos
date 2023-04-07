@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import br.com.alura.aluraesporte.R
 import br.com.alura.aluraesporte.databinding.ListaProdutosBinding
 import br.com.alura.aluraesporte.ui.recyclerview.adapter.ProdutosAdapter
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
@@ -28,6 +29,7 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        controlador.navigate(R.id.listaPagamentos)
         buscaProdutos()
     }
 
