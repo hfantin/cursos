@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import br.com.alura.aluraesporte.databinding.ListaPagamentosBinding
 import br.com.alura.aluraesporte.ui.recyclerview.adapter.ListaPagamentosAdapter
+import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.PagamentoViewModel
 import org.koin.android.ext.android.inject
@@ -32,7 +33,10 @@ class ListaPagamentosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        estadoAppViewModel.temAppBar = true
+        estadoAppViewModel.temComponentes = ComponentesVisuais(
+            appBar = true,
+            bottomNavigation = true
+        )
         binding.listaPagamentosRecyclerview.adapter = adapter
         viewModel.todos().observe(this, Observer {
             it?.let { pagamentosEncontrados ->

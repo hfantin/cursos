@@ -11,6 +11,7 @@ import br.com.alura.aluraesporte.databinding.PagamentoBinding
 import br.com.alura.aluraesporte.extensions.formatParaMoedaBrasileira
 import br.com.alura.aluraesporte.model.Pagamento
 import br.com.alura.aluraesporte.model.Produto
+import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.PagamentoViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -43,7 +44,7 @@ class PagamentoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        estadoAppViewModel.temAppBar = true
+        estadoAppViewModel.temComponentes = ComponentesVisuais(appBar = true)
         configuraBotaoConfirmaPagamento()
         buscaProduto()
     }

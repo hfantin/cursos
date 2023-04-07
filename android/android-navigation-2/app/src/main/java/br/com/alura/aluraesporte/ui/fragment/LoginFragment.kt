@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.alura.aluraesporte.databinding.LoginBinding
+import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -34,7 +35,7 @@ class LoginFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        estadoAppViewModel.temAppBar = false
+        estadoAppViewModel.temComponentes = ComponentesVisuais()
         binding.loginBotaoLogar.setOnClickListener {
             viewModel.loga()
             vaiParaListaProdutos()

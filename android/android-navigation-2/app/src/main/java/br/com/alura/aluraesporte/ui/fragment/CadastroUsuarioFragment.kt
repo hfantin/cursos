@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.alura.aluraesporte.databinding.CadastroUsuarioBinding
+import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class CadastroUsuarioFragment: Fragment() {
 
@@ -33,7 +33,7 @@ class CadastroUsuarioFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        estadoAppViewModel.temAppBar = true
+        estadoAppViewModel.temComponentes = ComponentesVisuais()
         binding.cadastroUsuarioBotaoCadastrar.setOnClickListener {
             controlador.popBackStack()
         }
