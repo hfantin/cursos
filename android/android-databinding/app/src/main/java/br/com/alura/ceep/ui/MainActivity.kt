@@ -2,7 +2,6 @@ package br.com.alura.ceep.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import br.com.alura.ceep.R
 import br.com.alura.ceep.ui.viewmodel.AppViewModel
@@ -25,11 +24,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configuraComponentesVisuais() {
-        appViewModel.componentes.observe(this, {
+        appViewModel.componentes.observe(this) {
             it?.let { componentes ->
                 configuraAppBar(componentes)
             }
-        })
+        }
     }
 
     private fun configuraAppBar(componentes: ComponentesVisuais) {

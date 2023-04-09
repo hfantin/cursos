@@ -3,7 +3,6 @@ package br.com.alura.ceep.ui.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.alura.ceep.R
@@ -62,12 +61,12 @@ class FormularioNotaFragment : Fragment() {
     private fun tentaBuscarNota() {
         appViewModel.temComponentes = appBarParaCriacao()
         if (temIdValido()) {
-            viewModel.buscaPorId(notaId).observe(this, {
+            viewModel.buscaPorId(notaId).observe(this) {
                 it?.let { notaEncontrada ->
                     notaData.atualiza(notaEncontrada)
                     appViewModel.temComponentes = appBarParaEdicao()
                 }
-            })
+            }
         }
     }
 
@@ -105,12 +104,12 @@ class FormularioNotaFragment : Fragment() {
     }
 
     private fun salva(notaNova: Nota) {
-        viewModel.salva(notaNova).observe(this, { resource ->
+        viewModel.salva(notaNova).observe(this) { resource ->
             when (resource) {
                 is Sucesso -> controlador.popBackStack()
                 is Falha -> resource.erro?.run { mostraMensagem(this) }
             }
-        })
+        }
     }
 
 }
