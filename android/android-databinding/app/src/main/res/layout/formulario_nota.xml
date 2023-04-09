@@ -2,7 +2,7 @@
 <layout>
     <data>
         <import type="android.view.View" />
-        <variable name="nota" type="br.com.alura.ceep.model.Nota" />
+        <variable name="nota" type="br.com.alura.ceep.ui.databinding.NotaData" />
         <variable name="solicitaImagem" type="android.view.View.OnClickListener" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -79,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:visibility="@{nota.imagemUrl.empty ? View.VISIBLE : View.GONE}"
+            android:onClick="@{solicitaImagem}"
             android:src="@drawable/ic_action_adiciona_foto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
