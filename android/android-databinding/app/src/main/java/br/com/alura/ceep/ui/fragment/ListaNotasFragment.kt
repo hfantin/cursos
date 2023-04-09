@@ -12,26 +12,26 @@ import br.com.alura.ceep.ui.recyclerview.adapter.ListaNotasAdapter
 import br.com.alura.ceep.ui.viewmodel.AppViewModel
 import br.com.alura.ceep.ui.viewmodel.ComponentesVisuais
 import br.com.alura.ceep.ui.viewmodel.ListaNotasViewModel
-import kotlinx.android.synthetic.main.lista_notas.*
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.sharedViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListaNotasFragment : Fragment() {
 
+    private lateinit var binding: ListaNotasBinding
     private val listaNotasAdapter: ListaNotasAdapter by inject()
     private val viewModel: ListaNotasViewModel by viewModel()
-    private val appViewModel: AppViewModel by sharedViewModel()
+    private val appViewModel: AppViewModel by activityViewModel()
     private val controlador by lazy {
         findNavController()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val viewBinding = ListaNotasBinding.inflate(inflater, container, false)
-        viewBinding.vaiParaFormularioInsercao = View.OnClickListener {
+        binding = ListaNotasBinding.inflate(inflater, container, false)
+        binding.vaiParaFormularioInsercao = View.OnClickListener {
             vaiParaFormulario()
         }
-        return viewBinding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +46,7 @@ class ListaNotasFragment : Fragment() {
     }
 
     private fun configuraRecyclerView() {
-        lista_notas_recyclerview.run {
+        binding.listaNotasRecyclerview.run {
             adapter = listaNotasAdapter
         }
         listaNotasAdapter.onItemClickListener = { notaSelecionada ->

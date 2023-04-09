@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import br.com.alura.ceep.R
 import br.com.alura.ceep.ui.viewmodel.AppViewModel
 import br.com.alura.ceep.ui.viewmodel.ComponentesVisuais
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 

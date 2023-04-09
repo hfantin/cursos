@@ -14,7 +14,7 @@ import br.com.alura.ceep.ui.viewmodel.ListaNotasViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 private const val NOME_DB = "ceep.db"

@@ -17,13 +17,13 @@ import br.com.alura.ceep.ui.viewmodel.AppBar
 import br.com.alura.ceep.ui.viewmodel.AppViewModel
 import br.com.alura.ceep.ui.viewmodel.ComponentesVisuais
 import br.com.alura.ceep.ui.viewmodel.FormularioNotaViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FormularioNotaFragment : Fragment() {
 
     private val argumentos by navArgs<FormularioNotaFragmentArgs>()
-    private val appViewModel: AppViewModel by sharedViewModel()
+    private val appViewModel: AppViewModel by activityViewModel()
     private val notaId by lazy {
         argumentos.notaId
     }
@@ -87,13 +87,13 @@ class FormularioNotaFragment : Fragment() {
 
     private fun appBarParaCriacao() = ComponentesVisuais(appBar = AppBar(titulo = "Criando nota"))
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater?.inflate(R.menu.formulario_nota_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.formulario_nota_menu_salva) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.formulario_nota_menu_salva) {
             val notaCriada = criaNota()
             notaCriada?.let { salva(notaCriada) }
         }
