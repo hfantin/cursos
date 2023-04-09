@@ -5,9 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
-import br.com.alura.ceep.R
 import br.com.alura.ceep.databinding.FormularioInserirImagemBinding
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 private const val INSERIR_URL = "Inserir URL"
 private const val CANCELAR = "Cancelar"

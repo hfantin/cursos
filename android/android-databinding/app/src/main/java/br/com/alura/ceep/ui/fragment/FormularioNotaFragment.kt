@@ -43,7 +43,7 @@ class FormularioNotaFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewDataBinding = FormularioNotaBinding.inflate(inflater, container, false)
         // para usar com MutableLiveData, descomentar os codigos abaixo:
         // viewDataBinding.lifecycleOwner = this
@@ -62,7 +62,7 @@ class FormularioNotaFragment : Fragment() {
     private fun tentaBuscarNota() {
         appViewModel.temComponentes = appBarParaCriacao()
         if (temIdValido()) {
-            viewModel.buscaPorId(notaId).observe(this, Observer {
+            viewModel.buscaPorId(notaId).observe(this, {
                 it?.let { notaEncontrada ->
                     notaData.atualiza(notaEncontrada)
                     appViewModel.temComponentes = appBarParaEdicao()
@@ -89,7 +89,7 @@ class FormularioNotaFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.formulario_nota_menu, menu)
+        inflater.inflate(R.menu.formulario_nota_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -105,7 +105,7 @@ class FormularioNotaFragment : Fragment() {
     }
 
     private fun salva(notaNova: Nota) {
-        viewModel.salva(notaNova).observe(this, Observer { resource ->
+        viewModel.salva(notaNova).observe(this, { resource ->
             when (resource) {
                 is Sucesso -> controlador.popBackStack()
                 is Falha -> resource.erro?.run { mostraMensagem(this) }

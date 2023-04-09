@@ -68,7 +68,7 @@ val dbModule = module {
 }
 
 val uiModule = module {
-    factory<ListaNotasAdapter> { ListaNotasAdapter() {} }
+    factory<ListaNotasAdapter> { ListaNotasAdapter {} }
 }
 
 val daoModule = module {

@@ -26,7 +26,7 @@ class ListaNotasFragment : Fragment() {
         findNavController()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = ListaNotasBinding.inflate(inflater, container, false)
         binding.vaiParaFormularioInsercao = View.OnClickListener {
             vaiParaFormulario()

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configuraComponentesVisuais() {
-        appViewModel.componentes.observe(this, Observer {
+        appViewModel.componentes.observe(this, {
             it?.let { componentes ->
                 configuraAppBar(componentes)
             }

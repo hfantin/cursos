@@ -3,15 +3,11 @@ package br.com.alura.ceep.ui.recyclerview.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.ceep.databinding.ItemNotaBinding
 import br.com.alura.ceep.model.Nota
-import br.com.alura.ceep.ui.databinding.NotaData
 
 class ListaNotasAdapter(
     var onItemClickListener: (notaSelecionada: Nota) -> Unit = {}
