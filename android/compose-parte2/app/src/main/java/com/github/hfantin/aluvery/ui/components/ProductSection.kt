@@ -23,8 +23,8 @@ import com.github.hfantin.aluvery.sampledata.sampleProducts
 import com.github.hfantin.aluvery.ui.theme.AluveryTheme
 
 @Composable
-fun ProductsSection(title: String, products: List<Product>) {
-    Column {
+fun ProductsSection(title: String, products: List<Product>, modifier: Modifier = Modifier,) {
+    Column(modifier) {
         Text(
             text = title,
             Modifier.padding(

@@ -1,5 +1,6 @@
 package com.github.hfantin.aluvery.sampledata
 
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import com.github.hfantin.aluvery.model.Product
 import java.math.BigDecimal
 
@@ -13,6 +14,7 @@ val sampleCandies = listOf(
         name = "Sorvete",
         price = BigDecimal("5.99"),
         image = "https://images.pexels.com/photos/1352278/pexels-photo-1352278.jpeg",
+        description = LoremIpsum(5).values.first()
     ),
     Product(
         name = "Bolo",
@@ -26,6 +28,7 @@ val sampleDrinks = listOf(
         name = "Cerveja",
         price = BigDecimal("5.99"),
         image = "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg",
+        description = LoremIpsum(30).values.first()
     ),
     Product(
         name = "Refrigerante",
@@ -35,12 +38,14 @@ val sampleDrinks = listOf(
     Product(
         name = "Suco",
         price = BigDecimal("7.99"),
-        image = "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg"
+        image = "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg",
+        description = LoremIpsum(5).values.first()
     ),
     Product(
         name = "Água",
         price = BigDecimal("2.99"),
-        image = "https://images.pexels.com/photos/327090/pexels-photo-327090.jpeg"
+        image = "https://images.pexels.com/photos/327090/pexels-photo-327090.jpeg",
+        description = LoremIpsum(100).values.first()
     )
 )
 val sampleProducts: List<Product> = listOf(

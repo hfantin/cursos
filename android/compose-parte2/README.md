@@ -9,3 +9,4 @@
 - [documentacao do google](https://developer.android.com/jetpack/compose)
 - [coil](https://coil-kt.github.io/coil/)
 - [compose states](https://developer.android.com/jetpack/compose/state)
+- [material design icons](https://fonts.google.com/icons)
